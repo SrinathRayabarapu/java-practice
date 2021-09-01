@@ -13,6 +13,15 @@ plugins {
     id "com.github.johnrengelman.shadow" version "5.0.0"
 }
 
+apply plugin: 'idea'
+
+idea {
+    module {
+        downloadJavadoc = true
+        downloadSources = true
+    }
+}
+
 apply plugin: "pl.allegro.tech.build.axion-release"
 
 jar {

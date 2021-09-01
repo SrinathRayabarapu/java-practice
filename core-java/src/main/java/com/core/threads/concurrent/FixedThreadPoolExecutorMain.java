@@ -15,10 +15,8 @@ public class FixedThreadPoolExecutorMain {
 
         // for CPU intensive operations - use below count
         int processorsCount = Runtime.getRuntime().availableProcessors();
-        System.out.println(processorsCount);
-
+        System.out.println("No. of processors available : " + processorsCount);
         // for I/O intensive operations(DB, N/W etc) - use higher count
-
 
         // we cann't alter the thread pool size
         ExecutorService service = Executors.newFixedThreadPool(4);
@@ -28,18 +26,17 @@ public class FixedThreadPoolExecutorMain {
 
         TaskThread task;
 
-        for (int i = 0; i <= 15; i++) {
+        for (int i = 1; i <= 15; i++) {
             task = new TaskThread("Task" + i);
             System.out.println("New task added : " + task.getName());
             service.execute(task); // submitting runnable
         }
-        service.shutdown();
-
         System.out.println("All tasks are submitted");
 
+
+        service.shutdown();
         try {
-            service.awaitTermination(5, TimeUnit.SECONDS);
-            System.out.println("5 seconds delay is over");
+            service.awaitTermination(30, TimeUnit.SECONDS);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

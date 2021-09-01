@@ -22,13 +22,12 @@ public class TaskThread implements Runnable{
 	
 	@Override
 	public void run() {
-		//Long duration = (long) (Math.random() * 10);
 		System.out.println("Running Task : " + this.name);
-		
 		try {
-			TimeUnit.SECONDS.sleep(3000);
+			TimeUnit.SECONDS.sleep(2);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 	}
+
 }
