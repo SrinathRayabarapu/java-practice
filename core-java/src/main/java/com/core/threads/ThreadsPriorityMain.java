@@ -1,7 +1,7 @@
 package com.core.threads;
 
 /**
- * a way to set priority on thread so that it will give more execution time
+ * a way to set priority on thread so that it will be given more execution time
  */
 public class ThreadsPriorityMain {
 	
