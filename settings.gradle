@@ -6,3 +6,5 @@ include 'data-layer'
 include 'design-patterns'
 include 'ds-algo'
 include 'util'
+include 'resilience4j'
+
