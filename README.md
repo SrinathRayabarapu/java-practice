@@ -7,6 +7,9 @@
 TODO :
 1. Have a common shared logging - remove duplicate config files
 2. Fix the shared libraries and keep only scoped ones
+3. Test classes are not compiling. Have a common-scoped library to execute them
+4. 
+
 
 
 
