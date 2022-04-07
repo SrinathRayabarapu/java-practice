@@ -11,6 +11,18 @@ TODO :
 4. 
 
 
+Create a sample springboot project with the following:
+Basic Spring boot libraries
+Lombok libraries
+
+
+
+Need to Learn:
+
+Micronaut
+RxJava2
+DockerSwarm
+
 
 
 ```
