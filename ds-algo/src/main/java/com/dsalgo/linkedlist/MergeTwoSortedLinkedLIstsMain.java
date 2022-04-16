@@ -1,10 +1,14 @@
 package com.dsalgo.linkedlist;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * given two sorted linked lists, merge them so that final list is sorted!
  *
  * @author Srinath.Rayabarapu
  */
+
+@Slf4j
 public class MergeTwoSortedLinkedLIstsMain {
 
     public static void main(String[] args) {
@@ -27,6 +31,9 @@ public class MergeTwoSortedLinkedLIstsMain {
         n6.setNext(n7);
         n7.setNext(n8);
 
+        log.info("First list : ");
+        printList(n1);
+
         // sorted list 2
         Node p1 = new Node(11);
         Node p2 = new Node(21);
@@ -45,19 +52,23 @@ public class MergeTwoSortedLinkedLIstsMain {
         p6.setNext(p7);
         p7.setNext(p8);
 
+        log.info("Second list : ");
+        printList(p1);
+
         Node t1 = mergeTwoLinkedListsRecursive(n1, p1);
 
-        System.out.println("Print list after merging: ");
-
+        log.info("Print list after merging: ");
         printList(t1);
 
     }
 
     private static void printList(Node t1) {
+        String result = "";
         while (t1 != null) {
-            System.out.println(t1);
+            result = result + " " + t1;
             t1 = t1.next;
         }
+        log.info(result);
     }
 
     private static Node mergeTwoLinkedListsRecursive(Node n1, Node p1) {
@@ -75,6 +86,11 @@ public class MergeTwoSortedLinkedLIstsMain {
             p1.next = mergeTwoLinkedListsRecursive(n1, p1.next);
             return p1;
         }
+    }
+
+    // TODO - https://www.geeksforgeeks.org/merge-two-sorted-lists-place/?ref=lbp
+    private static Node mergeTwoLinkedListsIterative(Node n1, Node p1) {
+        return  n1;
     }
 
 }

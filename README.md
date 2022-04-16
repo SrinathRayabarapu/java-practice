@@ -18,8 +18,9 @@ Lombok libraries
 
 Need to Learn:
 
-Micronaut
+gRPC practice
 RxJava2
+Micronaut
 DockerSwarm
 
 
