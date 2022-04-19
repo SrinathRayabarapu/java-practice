@@ -6,27 +6,26 @@ import java.util.Stack;
  * given a string, check the number of matching brackets.
  * 
  * @author Srinath.Rayabarapu
- *
  */
 public class StringBracketMatchesStackMain {
 	
 	public static void main(String[] args) {
 		
 		String str = "(()())";
-		findNumberofMatches(str);
+		findNumberOfMatches(str);
 		
 		String str1 = "(((())))";
-		findNumberofMatches(str1);
+		findNumberOfMatches(str1);
 		
 		String equ = "(a+(b*c)-d)";
-		findNumberofMatches(equ);
+		findNumberOfMatches(equ);
 	}
 
 	/**
 	 * assumption is : user doesn't pass invalid strings(")(())")
 	 * @param str
 	 */
-	private static void findNumberofMatches(String str) {
+	private static void findNumberOfMatches(String str) {
 		
 		Stack<String> stack = new Stack<>();
 		int matches = 0;
