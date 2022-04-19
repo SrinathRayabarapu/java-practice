@@ -30,7 +30,7 @@ public class LinkedListNumbersSumPuzzleMain {
         Node head2 = calculate(head, head1);
 
         System.out.println("Printing the Linkedlist : ");
-        LinkedListUtil.printList(head2);
+        LinkedListUtil.printLinkedList(head2);
     }
 
     private static Node calculate(Node head, Node head1) {

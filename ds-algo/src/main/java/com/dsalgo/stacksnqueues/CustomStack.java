@@ -1,7 +1,6 @@
 package com.dsalgo.stacksnqueues;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * generic stack class to do push, pop, peek operations.
@@ -10,15 +9,15 @@ import org.slf4j.LoggerFactory;
  *
  * @param <T>
  */
-class CustomGenericStack<T> {
 
-	private static final Logger LOG = LoggerFactory.getLogger(CustomGenericStack.class);
+@Slf4j
+class CustomStack<T> {
 
 	private T[] stackArray;
 	private int size;
 	private int top; //
 
-	public CustomGenericStack(int size) {
+	public CustomStack(int size) {
 		this.stackArray = (T[]) new Object[size];
 		this.size = size;
 		this.top = -1;
@@ -38,18 +37,18 @@ class CustomGenericStack<T> {
 
 	public void push(T t) {
 		if (isFull()) {
-			LOG.debug("Stack is Full, increasing the capacity! {}", "");
+			log.debug("Stack is Full, increasing the capacity! {}", "");
 			increaseStackCapacity();
 		}
 		this.stackArray[++this.top] = t;
-		LOG.debug("Pushing : {}", t);
+		log.debug("Pushing : {}", t);
 	}
 
 	public T pop() throws Exception {
 		if (isEmpty()) {
 			throw new Exception("Stack is empty, Cann't pop an element");
 		}
-		LOG.debug("Popping : {}", peek());
+		log.debug("Popping : {}", peek());
 		return this.stackArray[this.top--];
 	}
 

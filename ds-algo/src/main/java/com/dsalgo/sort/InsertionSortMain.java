@@ -7,7 +7,7 @@ import java.util.Arrays;
  * 
  * @author srayabar
  */
-public class InsertionSortDemo {
+public class InsertionSortMain {
 
 	public static void main(String[] args) {
 		
@@ -17,7 +17,7 @@ public class InsertionSortDemo {
 		//start from second element
 		for(int i=1; i<array.length; i++){
 			
-			//store i value in tmp
+			//store i array value in tmp
 			tmp = array[i];
 			
 			//for all i-1 value bigger than i values - swap

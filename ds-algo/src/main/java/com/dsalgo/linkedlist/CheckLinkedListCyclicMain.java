@@ -44,7 +44,7 @@ public class CheckLinkedListCyclicMain {
 
         while (head != null) {
             System.out.println(head);
-            head = head.next;
+            head = head.getNext();
         }
 
     }
@@ -55,26 +55,26 @@ public class CheckLinkedListCyclicMain {
         Node fast = head;
         Node previous = head;
 
-        while (fast != null && fast.next != null) {
-            slow = slow.next;
-            previous = fast.next;
-            fast = fast.next.next;
+        while (fast != null && fast.getNext() != null) {
+            slow = slow.getNext();
+            previous = fast.getNext();
+            fast = fast.getNext().getNext();
 
             // loop found
             if (slow == fast) {
                 slow = head;
                 // if the loop is starting at the head node
                 if (slow == fast) {
-                    previous.next = null;
+                    previous.setNext(null);
                 } else {
                     // identify the loop fist node and set the previous next to null
                     while (slow != fast) {
                         previous = fast;
-                        slow = slow.next;
-                        fast = fast.next;
+                        slow = slow.getNext();
+                        fast = fast.getNext();
                     }
                     // last element in the loop so setting next tot null
-                    previous.next = null;
+                    previous.setNext(null);
                 }
             }
         }
@@ -86,16 +86,16 @@ public class CheckLinkedListCyclicMain {
         Node slow = head;
         Node fast = head;
 
-        while (fast != null && fast.next != null) {
-            slow = slow.next;
-            fast = fast.next.next;
+        while (fast != null && fast.getNext() != null) {
+            slow = slow.getNext();
+            fast = fast.getNext().getNext();
 
             if (slow == fast) {
                 // imp: assign slow pointer to start node and loop till it matches with fast
                 slow = head;
                 while (slow != fast) {
-                    slow = slow.next;
-                    fast = fast.next;
+                    slow = slow.getNext();
+                    fast = fast.getNext();
                 }
                 System.out.println("Cycle starts at : " + slow);
                 break;
@@ -118,9 +118,9 @@ public class CheckLinkedListCyclicMain {
         Node slow = head;
         Node fast = head;
 
-        while (fast != null && fast.next != null) {
-            slow = slow.next;
-            fast = fast.next.next;
+        while (fast != null && fast.getNext() != null) {
+            slow = slow.getNext();
+            fast = fast.getNext().getNext();
 
             if (slow == fast) {
                 return true;

@@ -68,13 +68,13 @@ public class FindMergePointOfLinkedListsMain {
         }
 
         while (difference > 0) {
-            longer = longer.next;
+            longer = longer.getNext();
             difference--;
         }
 
-        while (longer.data != shorter.data) {
-            longer = longer.next;
-            shorter = shorter.next;
+        while (longer.getData() != shorter.getData()) {
+            longer = longer.getNext();
+            shorter = shorter.getNext();
         }
 
         System.out.println("Merge point is at : " + longer);
@@ -85,7 +85,7 @@ public class FindMergePointOfLinkedListsMain {
         Node current = m1;
         int length = 0;
         while (current != null) {
-            current = current.next;
+            current = current.getNext();
             length++;
         }
         return length;

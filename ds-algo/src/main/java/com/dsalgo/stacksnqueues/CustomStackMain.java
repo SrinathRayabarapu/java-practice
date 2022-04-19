@@ -4,7 +4,7 @@ public class CustomStackMain {
 	
 	public static void main(String[] args) {
 		try {
-			CustomGenericStack<Integer> stack = new CustomGenericStack<Integer>(10);
+			CustomStack<Integer> stack = new CustomStack<Integer>(10);
 			stack.push(10);
 			stack.push(12);
 			stack.push(14);

@@ -27,12 +27,12 @@ public class RotateLinkedListMain {
         n7.setNext(n8);
 
         System.out.println("Printing Original List : ");
-        LinkedListUtil.printList(head);
+        LinkedListUtil.printLinkedList(head);
 
         head = rotateLinkedList(head, 1);
 
         System.out.println("Printing Rotated List : ");
-        LinkedListUtil.printList(head);
+        LinkedListUtil.printLinkedList(head);
 
     }
 

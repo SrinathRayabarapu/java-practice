@@ -1,5 +1,7 @@
 package com.dsalgo.linkedlist;
 
+import static com.dsalgo.linkedlist.LinkedListUtil.printLinkedList;
+
 /**
  * given a singly linked list, reverse it.
  *
@@ -53,7 +55,7 @@ public class ReverseLinkedListMain {
             return;
 
         System.out.println(head);
-        printListInRecursive(head.next);
+        printListInRecursive(head.getNext());
     }
 
     // print linked list in reverse - no change to original structure
@@ -61,7 +63,7 @@ public class ReverseLinkedListMain {
         if(head == null){
             return;
         }
-        printListInReverseRecursive(head.next);
+        printListInReverseRecursive(head.getNext());
         System.out.println(head);
     }
 
@@ -70,18 +72,10 @@ public class ReverseLinkedListMain {
         Node previous = null; // required to make this as last node
 
         while(current != null){
-            Node next = current.next; // required to go to next element/continue loop
-            current.next = previous;
+            Node next = current.getNext(); // required to go to next element/continue loop
+            current.setNext(previous);
             previous = current;
             current = next;
-        }
-    }
-
-    private static void printLinkedList(Node head) {
-        Node current = head;
-        while (current != null){
-            System.out.println(current);
-            current = current.next;
         }
     }
 

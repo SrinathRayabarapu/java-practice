@@ -1,20 +1,26 @@
 package com.dsalgo.linkedlist;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * class to hold linked list util methods
  *
  * @author Srinath.Rayabarapu
  */
+
+@Slf4j
 public class LinkedListUtil {
 
     /**
      * prints passed linked list
      * @param head
      */
-    public static void printList(Node head) {
+    public static void printLinkedList(Node head) {
+        StringBuilder temp = new StringBuilder();
         while (head != null) {
-            System.out.println(head);
-            head = head.next;
+            temp.append(head).append(" ");
+            head = head.getNext();
         }
+        log.info(temp.toString());
     }
 }

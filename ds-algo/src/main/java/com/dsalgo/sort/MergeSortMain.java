@@ -1,9 +1,11 @@
 package com.dsalgo.sort;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.Arrays;
 
 /**
- * Impl1 - It uses Divide and conquer strategy to sort the elements<p>
+ * Impl1 - It uses Divide & Conquer strategy to sort the elements<p>
  * 
  * Idea: 
  * given an array of integers -
@@ -15,13 +17,14 @@ import java.util.Arrays;
  * 
  * @author srayabar
  */
-public class MergeSortDemo {
+@Slf4j
+public class MergeSortMain {
 	
-	public static void main(String[] args) {		
+	public static void main(String[] args) {
 		int[] array = new int[]{2, 4, 11, 9, 0, 7};
-		System.out.println("Before sorting : " + Arrays.toString(array));
+		log.info("Before sorting : " + Arrays.toString(array));
 		mergeSort(array);
-		System.out.println("After sorting : " + Arrays.toString(array));
+		log.info("After sorting : " + Arrays.toString(array));
 	}
 
 	private static int[] mergeSort(int[] array) {
@@ -65,10 +68,10 @@ public class MergeSortDemo {
 			}
 			iMerged++;
 		}
-		System.out.println("first->" + Arrays.toString(first));
+		log.info("first->" + Arrays.toString(first));
 		System.arraycopy(first, iFirst, array, iMerged, first.length-iFirst);
-		
-		System.out.println("second->" + Arrays.toString(second));
+
+		log.info("second->" + Arrays.toString(second));
 		System.arraycopy(second, iSecond, array, iMerged, second.length-iSecond);
 	}
 }

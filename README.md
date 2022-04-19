@@ -17,11 +17,12 @@ Lombok libraries
 
 
 Need to Learn:
-
+Docker and Kubernetes practice
 gRPC practice
 RxJava2
 Micronaut
 DockerSwarm
+
 
 
 
