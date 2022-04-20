@@ -1,20 +1,24 @@
 package com.dpattern.creational.singleton;
 
+import lombok.extern.slf4j.Slf4j;
+
 import javax.management.RuntimeErrorException;
 
 /**
  * common solution - private constructor creates singletonCommon object
  */
+@Slf4j
 public class SingletonCommon {
-	private static SingletonCommon singletonCommon = null;//static reference
+	private static SingletonCommon singletonCommon = null;
 
 	//private constructor methods will only be called by class loader
 	private SingletonCommon(){
 		if(singletonCommon != null){
+			// this avoids to create instance thru Reflection
 			throw new RuntimeErrorException(null,
-					"Can not create a new instance, please call getInstance() method"); // this avoids to create instance thru Reflection
+					"Can not create a new instance, please call getInstance() method");
 		}
-		System.out.println("Creating..");
+		log.info("Creating..");
 	}
 
 	//only global point of access

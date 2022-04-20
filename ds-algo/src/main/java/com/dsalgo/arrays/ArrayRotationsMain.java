@@ -25,7 +25,6 @@ public class ArrayRotationsMain {
 		log.info("Rotated right array : {}", Arrays.toString(temp));
     }
 
-    // TODO -
     private static void rotateRight(int[] input, int rotations) {
         while (rotations-- > 0) {
             int temp = input[input.length - 1];
