@@ -1,5 +1,7 @@
 package com.dsalgo.arrays;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.Arrays;
 
 /**
@@ -11,11 +13,12 @@ import java.util.Arrays;
  *
  * @author Srinath.Rayabarapu
  */
+@Slf4j
 public class CoinChangeDPMain {
 
     public static void main(String[] args) {
         int combinations = coinChange(6, new int[]{1, 2, 5});
-        System.out.println("Combinations : " + combinations);
+        log.info("Combinations : " + combinations);
     }
 
     private static int coinChange(int sum, int[] coins) {
@@ -25,12 +28,11 @@ public class CoinChangeDPMain {
 
         for (int coin : coins) {
             for (int i = 0; i < combinations.length; i++) {
-                if (i >= coin) {
+                if (coin <= i) {
                     combinations[i] = combinations[i] + combinations[i - coin];
-                    System.out.println(coin + ", " + i + ", " + Arrays.toString(combinations));
+                    log.info(coin + ", " + i + ", " + Arrays.toString(combinations));
                 }
             }
-            System.out.println();
         }
         return combinations[sum];
     }
