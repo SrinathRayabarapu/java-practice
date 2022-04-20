@@ -143,12 +143,13 @@ class CustomLinkedList {
 	}
 
 	public boolean cyclic(){
-		Node fast = this.head, slow = this.head;
+		Node fast = this.head;
+		Node slow = this.head;
 		
 		//caution - infinite loop
-		while(slow.next != null){
-			slow = slow.next;
-			fast = fast.next.next;
+		while(slow.getNext() != null){
+			slow = slow.getNext();
+			fast = fast.getNext().getNext();
 			
 			if(slow == fast){
 				return true;
@@ -172,59 +173,3 @@ class CustomLinkedList {
 	}
 }
 
-/**
- * Node object to point to next Object in the chain if no link is passed then
- * null by default
- * 
- * @author Srinath.Rayabarapu
- */
-class Node {
-
-	Node next;
-	Object data;
-
-	public Node(Object data) {
-		this.data = data;
-		this.next = null;
-	}
-
-	public Node(Object data, Node next) {
-		this.data = data;
-		this.next = next;
-	}
-
-	/**
-	 * @return the next
-	 */
-	public Node getNext() {
-		return this.next;
-	}
-
-	/**
-	 * @param next
-	 * the next to set
-	 */
-	public void setNext(Node next) {
-		this.next = next;
-	}
-
-	/**
-	 * @return the data
-	 */
-	public Object getData() {
-		return this.data;
-	}
-
-	/**
-	 * @param data
-	 * the data to set
-	 */
-	public void setData(Object data) {
-		this.data = data;
-	}
-
-	@Override
-	public String toString() {
-		return data.toString();
-	}
-}

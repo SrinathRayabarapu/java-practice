@@ -1,10 +1,17 @@
 package com.dsalgo.linkedlist;
 
+import lombok.extern.slf4j.Slf4j;
+
+import static com.dsalgo.linkedlist.LinkedListUtil.printLinkedList;
+
 /**
  * given two sorted linked lists, merge them so that final list is sorted!
+ * https://www.geeksforgeeks.org/merge-two-sorted-lists-place/?ref=lbp
  *
  * @author Srinath.Rayabarapu
  */
+
+@Slf4j
 public class MergeTwoSortedLinkedLIstsMain {
 
     public static void main(String[] args) {
@@ -27,6 +34,9 @@ public class MergeTwoSortedLinkedLIstsMain {
         n6.setNext(n7);
         n7.setNext(n8);
 
+        log.info("First list : ");
+        printLinkedList(n1);
+
         // sorted list 2
         Node p1 = new Node(11);
         Node p2 = new Node(21);
@@ -45,19 +55,14 @@ public class MergeTwoSortedLinkedLIstsMain {
         p6.setNext(p7);
         p7.setNext(p8);
 
+        log.info("Second list : ");
+        printLinkedList(p1);
+
         Node t1 = mergeTwoLinkedListsRecursive(n1, p1);
 
-        System.out.println("Print list after merging: ");
+        log.info("Print list after merging: ");
+        printLinkedList(t1);
 
-        printList(t1);
-
-    }
-
-    private static void printList(Node t1) {
-        while (t1 != null) {
-            System.out.println(t1);
-            t1 = t1.next;
-        }
     }
 
     private static Node mergeTwoLinkedListsRecursive(Node n1, Node p1) {
@@ -69,10 +74,10 @@ public class MergeTwoSortedLinkedLIstsMain {
             return n1;
 
         if((int)n1.getData() < (int)p1.getData()){
-            n1.next = mergeTwoLinkedListsRecursive(n1.next, p1);
+            n1.setNext(mergeTwoLinkedListsRecursive(n1.getNext(), p1));
             return n1;
         } else {
-            p1.next = mergeTwoLinkedListsRecursive(n1, p1.next);
+            p1.setNext(mergeTwoLinkedListsRecursive(n1, p1.getNext()));
             return p1;
         }
     }

@@ -57,7 +57,7 @@ public class FindNthNodeFromLastLinkedListMain {
         //when count value matched the nodeFromLast, we will return node value and from this point onwards,
         //returned value is same across all up recursive calls.
         if (count == i) {
-            return n1.data;
+            return n1.getData();
         }
         return data;
     }
@@ -67,14 +67,14 @@ public class FindNthNodeFromLastLinkedListMain {
         Node fast = n1;
 
         // moving fast pointer to n places forward
-        while (fast != null && fast.next != null && 0 < n) {
-            fast = fast.next;
+        while (fast != null && fast.getNext() != null && 0 < n) {
+            fast = fast.getNext();
             n--;
         }
 
         while (fast != null) {
-            slow = slow.next;
-            fast = fast.next;
+            slow = slow.getNext();
+            fast = fast.getNext();
         }
 
         System.out.println("Loop: Found node : " + slow);

@@ -25,7 +25,8 @@ public class CalculateStringRotationMain {
         System.out.println(calculateStringRotationsClever("coffee", "eecoff"));
     }
 
-    // approach 1: check length and forward input string by a char and try to match and repeat till it matches or reaches to the end
+    // approach 1: check length and forward input string by a char and try to match and repeat till it matches
+    // or reaches to the end
     public static int calculateStringRotations(String inputString, String targetString){
 
         if(inputString == null || targetString == null)

@@ -5,7 +5,6 @@ package com.dpattern.creational.factory;
  * and refer to newly created object using a common interface.
  *
  * @author Srinath.Rayabarapu
- *
  */
 public class FactoryPatternMain {
 	

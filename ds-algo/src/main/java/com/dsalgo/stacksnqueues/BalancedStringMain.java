@@ -12,7 +12,7 @@ import java.util.Stack;
 public class BalancedStringMain {
 
     public boolean checkStrngBalanced(final String inputString) {
-        CustomGenericStack<Character> charStack = new CustomGenericStack<>(inputString.length());
+        CustomStack<Character> charStack = new CustomStack<>(inputString.length());
 
         for (char charInString : inputString.toCharArray()) {
 

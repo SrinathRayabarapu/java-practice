@@ -33,20 +33,20 @@ public class RemoveDuplicatesInLinkedListMain {
         n7.setNext(n8);
 
 /*        System.out.println("Printing original list");
-        LinkedListUtil.printList(head);
+        LinkedListUtil.printLinkedList(head);
 
         head = removeDuplicatesApproach1(head);
 
         System.out.println("Printing after removing duplicates");
-        LinkedListUtil.printList(head);*/
+        LinkedListUtil.printLinkedList(head);*/
 
         System.out.println("Printing original list");
-        LinkedListUtil.printList(head);
+        LinkedListUtil.printLinkedList(head);
 
         head = removeDuplicatesHashMapApproach1(head);
 
         System.out.println("Printing after removing duplicates");
-        LinkedListUtil.printList(head);
+        LinkedListUtil.printLinkedList(head);
 
     }
 

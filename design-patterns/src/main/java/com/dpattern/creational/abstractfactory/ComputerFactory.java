@@ -1,4 +1,4 @@
-package com.dpattern.creational.factory.abstrct;
+package com.dpattern.creational.abstractfactory;
 
 /**
  * consumer class and entry point for abstract factory implementation

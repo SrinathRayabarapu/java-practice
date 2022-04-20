@@ -1,26 +1,27 @@
 package com.puzzles;
 
+import lombok.extern.slf4j.Slf4j;
+
+import java.util.stream.IntStream;
+
 /**
- * Program to check whether a number is Palindrome or not
+ * Program to check whether a string is Palindrome or not
  * <p>
- * Def: A palindromic number is same when its letters are reversed. Like 16461, abcba
+ * Def: A palindromic string is same when its letters are reversed. Like 16461, abcba
  *
  * @author Srinath.Rayabarapu
  */
+@Slf4j
 public class PalindromeMain {
 
     public static void main(String[] args) {
-		
-/*		Scanner s = new Scanner(System.in);
-		System.out.print("enter a number \n");
-		int num = s.nextInt();
+        String str = "abcba";
+        checkPalindromeStringOk(str);
 
-		//int n = 1233321;
-		checkPalindrome(num);*/
+        checkPalindromeStringGood(str);
 
-        String str = "A man, a plan, a canal: Panama";
-        int i = checkPalindromeNasty(str);
-        System.out.println(i);
+        int input = 1661;
+        checkPalindromeInt(input);
     }
 
     /**
@@ -28,8 +29,7 @@ public class PalindromeMain {
      *
      * @param n
      */
-    private static void checkPalindrome(int n) {
-        System.out.print("Good way : ");
+    private static void checkPalindromeInt(int n) {
         //n%10 - will give last number
         //n/10 - will give whole number without last number
         int result = 0;
@@ -41,32 +41,31 @@ public class PalindromeMain {
             result = (result * 10) + b;
         }
         if (result == temp) {
-            System.out.println("palindrome");
+            log.info(temp + " is palindrome");
         } else {
-            System.out.println("not palindrome");
+            log.info(temp + " is not palindrome");
         }
     }
 
-    /**
-     * converting to a string and comparing chars - more of work around!
-     *
-     * @param str
-     */
-    private static int checkPalindromeNasty(String str) {
-
-        String reverse = "";
-        String original = "";
-        for (char c : str.toCharArray()) {
-            // upper case and lower case alphabets condition
-            if ((64 < c && c < 91) || (96 < c && c < 123)) {
-                reverse = c + reverse;
-                original = original + c;
-            }
+    private static void checkPalindromeStringOk(String str) {
+        StringBuilder temp = new StringBuilder();
+        for(int i = str.length() - 1; i >= 0; i--) {
+            temp.append(str.charAt(i));
         }
-        if (original.toLowerCase().equals(reverse.toLowerCase())) {
-            return str.length();
+        if(str.equals(temp.toString())){
+            log.info( str+ " is palindrome");
         } else {
-            return -1;
+            log.info( str+ " is NOT palindrome");
         }
     }
+
+    private static void checkPalindromeStringGood(String str) {
+        boolean allMatch = IntStream.range(0, str.length() / 2).allMatch(i -> str.charAt(i) == (str.charAt(str.length() - 1 - i)));
+        if(allMatch){
+            log.info( str+ " is palindrome");
+        } else {
+            log.info( str+ " is NOT palindrome");
+        }
+    }
+
 }

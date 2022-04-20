@@ -1,5 +1,7 @@
 package com.core.comparable;
 
+import java.util.Objects;
+
 /**
  * the class will have to alter it's behavior by implementing Comparable interface.
  * 
@@ -62,15 +64,27 @@ public class Employee implements Comparable<Employee>{
 	
 	@Override
 	public int compareTo(Employee o) {
-		
-		if(this.empId < o.empId){
+		if(this.empId > o.empId){
 			return 1;
-		} else if(this.empId > o.empId){
+		} else if(this.empId < o.empId){
 			return -1;
 		}
 		return 0;
 	}
-	
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Employee employee = (Employee) o;
+		return empId == employee.empId && age == employee.age && empName.equals(employee.empName) && designation.equals(employee.designation);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(empId, empName, designation, age);
+	}
+
 	/**
 	 * @return the age
 	 */
