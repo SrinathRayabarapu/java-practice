@@ -1,4 +1,4 @@
-package com.dpattern.creational.factory.abstrct;
+package com.dpattern.creational.abstractfactory;
 
 /**
  * super class can be an interface also
