@@ -18,13 +18,16 @@ public class OpenClosedMain {
         Student student = new Student(01, "Srinath");
         log.info("Student : " + student);
 
-        Student studentMore = new StudentWithMoreDetails(01, "Srinath", "Pasra",
+        StudentWithMoreDetails studentMore = new StudentWithMoreDetails(01, "Srinath", "Pasra",
                 "Bhaskar Rao", "Sarojana");
         log.info("StudentWithMoreDetails : " + studentMore);
+
     }
+
 }
 
 @ToString
+@Slf4j
 class Student {
     int id;
     String name;
@@ -37,6 +40,10 @@ class Student {
     public Student(int id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public void printMe(){
+        log.info("Student id : " + id + ", name : " + name);
     }
 
 }
