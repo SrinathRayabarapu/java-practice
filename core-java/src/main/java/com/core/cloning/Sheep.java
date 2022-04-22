@@ -1,4 +1,4 @@
-package com.core.clone;
+package com.core.cloning;
 
 /**
  * cloneable Sheep

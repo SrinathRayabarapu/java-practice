@@ -10,7 +10,6 @@ package com.dpattern.creational.builder;
  * representations of the same object.
  *
  * @author Srinath.Rayabarapu
- *
  */
 public class BuilderPatternMain {
 

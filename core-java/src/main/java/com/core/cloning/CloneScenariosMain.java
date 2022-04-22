@@ -1,4 +1,4 @@
-package com.core.clone;
+package com.core.cloning;
 
 /**
  * this class demonstrates following <br> 
@@ -10,8 +10,9 @@ package com.core.clone;
  *
  */
 public class CloneScenariosMain {
-	
-	
+
+	// TODO - find few more better examples for cloning : Shallow and Deep
+
 	public static void main(String[] args) {
 		
 		Sheep motherSheep = new Sheep("dolly", "white");

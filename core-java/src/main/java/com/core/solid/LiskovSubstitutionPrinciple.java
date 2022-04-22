@@ -1,4 +1,4 @@
-package com.aaa;
+package com.core.solid;
 
 /**
  * LSP is an important part of SOLID principle which specified that you should design your classes so that
