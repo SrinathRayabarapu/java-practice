@@ -9,6 +9,7 @@ import java.util.Arrays;
  * 
  * @author Srinath.Rayabarapu
  */
+@Slf4j
 public class ArrayRotationsMain {
 
     public static void main(String[] args) {
@@ -26,20 +27,16 @@ public class ArrayRotationsMain {
 
     // TODO -
     private static void rotateRight(int[] input, int rotations) {
-        while (rotations-- > 0) {
-            int temp = input[input.length - 1];
-            for (int i = input.length - 2; i >= 0; i--) {
-				input[i+1] = input[i];
-            }
+		while (rotations-- > 0) {
+			int temp = input[input.length - 1];
+			for (int i = input.length - 2; i >= 0; i--) {
+				input[i + 1] = input[i];
+			}
 			input[0] = temp;
-
-	private static void print(int[] temp) {
-		for (int i = 0; i < temp.length; i++) {
-			System.out.print(temp[i] + " ");
 		}
 	}
 
-	private static void rotate(int[] temp, int i) {
+	private static void rotateLeft(int[] temp, int i) {
 		while(i-- > 0) {
 			int tp = temp[0];
 			for (int j = 0; j < temp.length-1; j++) {
