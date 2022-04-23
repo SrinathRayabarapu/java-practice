@@ -24,7 +24,7 @@ class ShoppingMall {
 //    CreditCard creditCard;
 //    DebitCard debitCard;
 
-    // rather depend on abstractions
+    // instead depend on abstractions
     BankCard bankCard;
 
     public ShoppingMall(BankCard bankCard) {
