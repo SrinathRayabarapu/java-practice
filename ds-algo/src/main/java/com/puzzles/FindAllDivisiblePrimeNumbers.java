@@ -7,6 +7,8 @@ import lombok.extern.slf4j.Slf4j;
  * Ex: 12 -> 2, 2, 3
  * 20 -> 2, 2, 5
  * 15 -> 3, 5
+ *
+ * @EPAM
  */
 @Slf4j
 public class FindAllDivisiblePrimeNumbers {
