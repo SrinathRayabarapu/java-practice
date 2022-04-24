@@ -20,7 +20,7 @@ public class PrototypePatternMain {
 
 class ColorStore {
 
-    private Map<String, Color> colors = new HashMap<String, Color>();
+    private Map<String, Color> colors = new HashMap<>();
 
     // single place where the original(complex) object construction happens
     public ColorStore() {
