@@ -1,5 +1,7 @@
 package com.dsalgo.trees;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * Given a binary tree and a sum, return true if there is a path from the root down to a leaf, such that
  * adding up all the values along the path equals the given sum.<br>
@@ -10,27 +12,28 @@ package com.dsalgo.trees;
  *
  * @author Srinath.Rayabarapu
  */
+@Slf4j
 public class BinaryTreeLeafToPathSumMain {
-
-    static TreeNode root;
 
     public static void main(String[] args) {
 
-        BinaryTreeLeafToPathSumMain pathDemo = new BinaryTreeLeafToPathSumMain();
-        pathDemo.root = new TreeNode(15);
-        pathDemo.root.leftChild = new TreeNode(6);
-        pathDemo.root.rightChild = new TreeNode(17);
+        TreeNode root = new TreeNode(15);
+        root.leftChild = new TreeNode(6);
+        root.rightChild = new TreeNode(17);
 
-        boolean hasPathtoLeaf = hasPathFromRootToLeaf(root, 21);
-        System.out.println("Has path - " + hasPathtoLeaf);
+        boolean isPathAvailable = hasPathFromRootToLeaf(root, 21);
+        log.info("Has path - " + isPathAvailable);
 
-        TreeNode root = new TreeNode(10, "ten");
+        root = new TreeNode(10, "ten");
         root.leftChild = new TreeNode(20, "twenty");
         root.rightChild = new TreeNode(30, "thirty");
         root.leftChild.leftChild = new TreeNode(70, "seventy");
         root.leftChild.rightChild = new TreeNode(60, "sixty");
         root.rightChild.leftChild = new TreeNode(50, "fifty");
         root.rightChild.rightChild = new TreeNode(40, "forty");
+
+        isPathAvailable = hasPathFromRootToLeaf(root, 90);
+        log.info("Has path - " + isPathAvailable);
 
         findAllPathsFromRootToLeaf(root, 90);
 
@@ -67,7 +70,7 @@ public class BinaryTreeLeafToPathSumMain {
 
         //look for right root recursively if it's present
         boolean right = false;
-        if (root.leftChild != null)
+        if (root.rightChild != null)
             right = hasPathFromRootToLeaf(root.rightChild, remainingSum);
 
         //if either of the one has path then return true

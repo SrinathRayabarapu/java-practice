@@ -1,11 +1,13 @@
 package com.core.threads.concurrent;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.LinkedList;
 import java.util.Queue;
 
 /**
  * This class enqueue the tasks till it's size and notifies the consumers to consume. Once all tasks are
- * Dequeued then notifies the all producers to produce the tasks<p>
+ * dequeued then notifies the all producers to produce the tasks<p>
  * 
  * This is similar to producer and consumer problem<p>
  * 
@@ -19,24 +21,25 @@ import java.util.Queue;
  *
  * @author Srinath.Rayabarapu
  */
+@Slf4j
 public class BlockingQueueImpl<T> {
 	
-	private Queue<T> queue = new LinkedList<>();
-	private int MAX_TASK_IN_QUEUE = -1;
+	private final Queue<T> queue = new LinkedList<>();
+	private int maxTasksInQueue = -1;
 	
 	public BlockingQueueImpl(int size) {
-		this.MAX_TASK_IN_QUEUE = size;
+		this.maxTasksInQueue = size;
 	}
 	
 	public synchronized void enqueue(T task) throws InterruptedException {
 		
-		while(this.queue.size() == this.MAX_TASK_IN_QUEUE) {
-			System.out.println("enqueue: Queue is Full.. Waiting : " + task);
+		while(this.queue.size() == this.maxTasksInQueue) {
+			log.info("enqueue: Queue is Full.. Waiting : " + task);
 			wait();
 		}
 		
 		if(this.queue.isEmpty()) {
-			System.out.println("enqueue: Queue is Empty.. Notifying all Tasks");
+			log.info("enqueue: Queue is Empty.. Notifying all Tasks");
 			notifyAll();
 		}
 		
@@ -47,12 +50,12 @@ public class BlockingQueueImpl<T> {
 	public synchronized T dequeue() throws InterruptedException {
 		
 		while(this.queue.isEmpty()) {
-			System.out.println("dequeue: Queue is Empty");
+			log.info("dequeue: Queue is Empty");
 			wait();
 		}
 		
-		while(this.queue.size() == this.MAX_TASK_IN_QUEUE) {
-			System.out.println("dequeue: Queue is Full. Waiting..");
+		while(this.queue.size() == this.maxTasksInQueue) {
+			log.info("dequeue: Queue is Full. Waiting..");
 			notifyAll();
 		}
 		

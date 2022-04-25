@@ -51,7 +51,7 @@ public class FibonacciSeriesMemoizationMain {
 	}
 
 	/**
-	 * Memoization with HashMap - Used BigInteger for avoiding over flow
+	 * Memoization with HashMap - Used BigInteger for avoiding integer overflow
 	 * 
 	 * @param num
 	 * @param cache
