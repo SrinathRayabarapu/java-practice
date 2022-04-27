@@ -1,79 +1,84 @@
 package com.dsalgo.trees;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.Stack;
 
 /**
- * Simple Binary Tree with below structure:
+ * On a given binary search tree(BST) -
   
    				40
    		20				60
    	10		30		50		70
    
- * 1. Pre Order traversal
+ * 1. In Order traversal - left, root, right
+	Traverse the left subtree in InOrder.
+	Visit the node.
+	Traverse the right subtree in InOrder.
+
+	10 20 30 40 50 60 70
+
+
+ * 2. Pre Order traversal - root, left, right
  	Visit the node.
 	Traverse the left subtree in PreOrder.
 	Traverse the right subtree in PreOrder.
 	
 	40 20 10 30 60 50 70 
-	
- * 2. Post Order traversal
+
+
+ * 3. Post Order traversal - left, right, root
 	Traverse the left subtree in PostOrder.
 	Traverse the right subtree in PostOrder.
 	Visit the node.
 	
 	10 30 20 50 70 60 40 
 	
- * 3. In Order traversal
-	Traverse the left subtree in InOrder.
-	Visit the node.
-	Traverse the right subtree in InOrder.
-	
-	10 20 30 40 50 60 70 
+ *
 	
  * @author Srinath.Rayabarapu
  */
+@Slf4j
 public class BinaryTreeTraversalsMain {
 
 	public static void main(String[] args) {
 
-		CustomBinaryTree bTree = new CustomBinaryTree();
-		bTree.addNode(10, "one");
-		bTree.addNode(20, "two");
-		bTree.addNode(30, "three");
-		bTree.addNode(40, "four");
-		bTree.addNode(50, "five");
-		bTree.addNode(60, "six");
-		bTree.addNode(70, "seven");
+		TreeNode root = new TreeNode(60, "sixty");
+		root.leftChild = new TreeNode(30, "thirty");
+		root.rightChild = new TreeNode(80, "eighty");
+		root.leftChild.leftChild = new TreeNode(10, "ten");
+		root.leftChild.rightChild = new TreeNode(50, "fifty");
+		root.rightChild.leftChild = new TreeNode(70, "seventy");
+		root.rightChild.rightChild = new TreeNode(90, "ninety");
 
-		System.out.println("Original Tree: ");
-		bTree.printTree();
-		
-		System.out.println("\n----- Pre Order -----");
-		System.out.println("Recursive approach");
-		preOrderRecursive(bTree.root);
-		
-		System.out.println("\nIterative approach");
-		preOrderIterative(bTree.root);
-		
-		System.out.println("\n\n----- Post Order -----");
-		System.out.println("Recursive approach");
-		postOrderRecursive(bTree.root);
 
-		System.out.println("\n\n----- In Order -----");
-		System.out.println("Recursive approach");
-		inOrderRecursive(bTree.root);
+		log.info("Original Tree: ");
+		log.info("           60            ");
+		log.info("     30            80    ");
+		log.info("10      50     70        90");
+
+
+		log.info("----- In Order -----");
+		inOrderRecursive(root);
+
+		log.info("----- Pre Order -----");
+		preOrderRecursive(root);
+
+		log.info("----- Post Order -----");
+		postOrderRecursive(root);
+
 	}
 
 	/**
 	 * printTree left child, node and right child
 	 *
-	 * @param tNode
+	 * @param node
 	 */
-	private static void inOrderRecursive(TreeNode tNode) {
-		if(tNode != null){
-			inOrderRecursive(tNode.leftChild);
-			print(tNode);
-			inOrderRecursive(tNode.rightChild);
+	private static void inOrderRecursive(TreeNode node) {
+		if(node != null){
+			inOrderRecursive(node.leftChild);
+			print(node);
+			inOrderRecursive(node.rightChild);
 		}
 	}
 
@@ -82,26 +87,26 @@ public class BinaryTreeTraversalsMain {
 	 *
 	 * recursive is easy - uses implicit Stack
 	 *
-	 * @param tNode
+	 * @param node
 	 */
-	private static void preOrderRecursive(TreeNode tNode) {
-		if(tNode != null){
-			print(tNode);
-			preOrderRecursive(tNode.leftChild);
-			preOrderRecursive(tNode.rightChild);
+	private static void preOrderRecursive(TreeNode node) {
+		if(node != null){
+			print(node);
+			preOrderRecursive(node.leftChild);
+			preOrderRecursive(node.rightChild);
 		}
 	}
 
 	/**
 	 * printTree left child, right child and node
 	 *
-	 * @param tNode
+	 * @param node
 	 */
-	private static void postOrderRecursive(TreeNode tNode){
-		if(tNode != null){
-			postOrderRecursive(tNode.leftChild);
-			postOrderRecursive(tNode.rightChild);
-			print(tNode);
+	private static void postOrderRecursive(TreeNode node){
+		if(node != null){
+			postOrderRecursive(node.leftChild);
+			postOrderRecursive(node.rightChild);
+			print(node);
 		}
 	}
 
@@ -114,15 +119,15 @@ public class BinaryTreeTraversalsMain {
 	 * Push right child of popped node to stack
 	 * Push left child of popped node to stack
 	 *
-	 * @param tNode
+	 * @param node
 	 */
-	private static void preOrderIterative(TreeNode tNode) {
+	private static void preOrderIterative(TreeNode node) {
 		
-		if(tNode == null)
+		if(node == null)
 			return;
 		
 		Stack<TreeNode> stack = new Stack<>();
-		stack.push(tNode);
+		stack.push(node);
 		
 		while(!stack.empty()){
 			TreeNode pop = stack.pop();
@@ -131,12 +136,13 @@ public class BinaryTreeTraversalsMain {
 			//push right first so that while popping left comes early
 			if(pop.rightChild != null)
 				stack.push(pop.rightChild);
+
 			if(pop.leftChild != null)
 				stack.push(pop.leftChild);
 		}
 	}
 
 	private static void print(TreeNode tNode) {
-		System.out.print(tNode.data +" ");
+		log.info(tNode.data +" ");
 	}
 }
