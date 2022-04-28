@@ -23,4 +23,13 @@ public class LinkedListUtil {
         }
         log.info(temp.toString());
     }
+
+    public static void printListInRecursive(Node head) {
+        if(head == null)
+            return;
+
+        log.info("{}", head);
+        printListInRecursive(head.getNext());
+    }
+    
 }

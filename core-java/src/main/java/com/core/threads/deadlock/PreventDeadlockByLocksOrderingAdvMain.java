@@ -42,7 +42,7 @@ class CancelTicket1 extends Thread {
 		synchronized (comp) {
 			System.out.println(" cancel ticket grabbed lock on comp");
 			try {
-				sleep(100);
+				sleep(5000);
 			} catch (Exception e) {
 			}
 			System.out.println("  cancel ticket  now trying to grab lock on train");
@@ -67,7 +67,7 @@ class BookTicket1 extends Thread {
 		synchronized (comp) {
 			System.out.println("  book ticket  grabbed lock on comp");
 			try {
-				sleep(200);
+				sleep(5000);
 			} catch (Exception e) {
 			}
 			System.out.println("  book ticket   now trying to grab lock on train");

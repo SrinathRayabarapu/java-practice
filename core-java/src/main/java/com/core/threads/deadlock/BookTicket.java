@@ -1,16 +1,14 @@
 package com.core.threads.deadlock;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * thread designed to acquire two monitors
  *
  * @author Srinath.Rayabarapu
  */
+@Slf4j
 public class BookTicket extends Thread {
-
-	private static final Logger LOG = LoggerFactory.getLogger(BookTicket.class);
 
 	private final Object train;
 	private final Object comp;
@@ -24,14 +22,15 @@ public class BookTicket extends Thread {
 	public void run() {
 		// grab lock on train
 		synchronized (train) {
-			LOG.info("grabbed lock on train monitor");
+			log.info("grabbed lock on train monitor");
 			try {
-				train.wait(2000); //mimicking some operation
+				train.wait(5000); //mimicking some operation
 			} catch (Exception ignored) {
+				// ignore
 			}
-			LOG.info("now trying to grab lock on comp monitor");
+			log.info("now trying to grab lock on comp monitor");
 			synchronized (comp) {
-				LOG.info("grabbed lock on comp monitor");
+				log.info("grabbed lock on comp monitor");
 			}
 		}
 	}
