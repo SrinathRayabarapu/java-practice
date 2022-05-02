@@ -1,7 +1,6 @@
 package com.dsalgo.arrays;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.Arrays;
 
@@ -12,9 +11,8 @@ import java.util.Arrays;
  *
  * @author Srinath.Rayabarapu
  */
+@Slf4j
 public class ArraysRemoveDuplicatesMain {
-
-    private static final Logger LOG = LoggerFactory.getLogger(ArraysRemoveDuplicatesMain.class);
 
     public static void main(String[] args) {
 
@@ -32,10 +30,9 @@ public class ArraysRemoveDuplicatesMain {
 
         // returns unique elements count
         int uniqueArrayLength = bestRemoveDuplicatesWithoutExtraSpace(nums1);
-        LOG.info("BEST Unique elements without extra space : {}", uniqueArrayLength);
-        System.out.println(Arrays.toString(nums1));
+        log.info("BEST Unique elements without extra space : {}", uniqueArrayLength);
+        log.info(Arrays.toString(nums1));
 
-        System.out.println("");
         int[] num2 = {2, 3, 1, 2, 3};
         findDuplicates(num2);
     }
@@ -99,7 +96,7 @@ public class ArraysRemoveDuplicatesMain {
 
         nums[j++] = nums[length - 1];
 
-        LOG.info("Unique elements array : {}", nums);
+        log.info("Unique elements array : {}", nums);
         return j;
     }
 
@@ -126,7 +123,7 @@ public class ArraysRemoveDuplicatesMain {
         // observe above, only nums[i] value is being copied, hence copy the last element as well
         temp[j++] = nums[length - 1];
 
-        LOG.info("Unique elements array : {}", temp);
+        log.info("Unique elements array : {}", temp);
 
         return j;
     }

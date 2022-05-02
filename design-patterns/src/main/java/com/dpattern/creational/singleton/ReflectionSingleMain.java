@@ -11,13 +11,13 @@ public class ReflectionSingleMain {
 
 	public static void main(String[] args) {
 
-		EagerStaticBlockSingleton singletonOne = EagerStaticBlockSingleton.getInstance();
-		EagerStaticBlockSingleton singletonTwo = null;
-		Constructor<?>[] declaredConstructors = EagerStaticBlockSingleton.class.getDeclaredConstructors();
+		SingletonEager singletonOne = SingletonEager.getInstance();
+		SingletonEager singletonTwo = null;
+		Constructor<?>[] declaredConstructors = SingletonEager.class.getDeclaredConstructors();
 		for(Constructor constructor : declaredConstructors) {
 			constructor.setAccessible(true);
 			try {
-				singletonTwo = (EagerStaticBlockSingleton) constructor.newInstance();
+				singletonTwo = (SingletonEager) constructor.newInstance();
 			} catch (InstantiationException | IllegalAccessException | IllegalArgumentException
 					| InvocationTargetException e) {
 				e.printStackTrace();

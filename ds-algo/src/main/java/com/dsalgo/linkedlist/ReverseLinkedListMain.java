@@ -1,6 +1,9 @@
 package com.dsalgo.linkedlist;
 
+import lombok.extern.slf4j.Slf4j;
+
 import static com.dsalgo.linkedlist.LinkedListUtil.printLinkedList;
+import static com.dsalgo.linkedlist.LinkedListUtil.printListInRecursive;
 
 /**
  * given a singly linked list, reverse it.
@@ -9,6 +12,7 @@ import static com.dsalgo.linkedlist.LinkedListUtil.printLinkedList;
  *
  * @author Srinath.Rayabarapu
  */
+@Slf4j
 public class ReverseLinkedListMain {
 
     public static void main(String[] args) {
@@ -30,32 +34,24 @@ public class ReverseLinkedListMain {
         n6.setNext(n7);
         n7.setNext(n8);
 
-        System.out.println("Printing original linked list - loop way : ");
+        log.info("Printing original linked list - loop way : ");
         // printing list in loop
         printLinkedList(head);
 
-        System.out.println("Printing original linked list - recursive way : ");
+        log.info("Printing original linked list - recursive way : ");
         // printing list in recursive
         printListInRecursive(head);
 
-        System.out.println("Printing in Reverse order - No change to list: ");
+        log.info("Printing in Reverse order - No change to list: ");
         //simply print in reverse order - don't change original list structure
         printListInReverseRecursive(head);
 
         // it will change the original list!
-        reverseLinkedListIterative(head);
+        Node node = reverseLinkedListIterative(head);
 
-        System.out.println("Printing Reversed Linked list: ");
-        printLinkedList(n8);
+        log.info("Printing Reversed Linked list: ");
+        printLinkedList(node);
 
-    }
-
-    private static void printListInRecursive(Node head) {
-        if(head == null)
-            return;
-
-        System.out.println(head);
-        printListInRecursive(head.getNext());
     }
 
     // print linked list in reverse - no change to original structure
@@ -67,7 +63,7 @@ public class ReverseLinkedListMain {
         System.out.println(head);
     }
 
-    private static void reverseLinkedListIterative(Node head) {
+    private static Node reverseLinkedListIterative(Node head) {
         Node current = head;
         Node previous = null; // required to make this as last node
 
@@ -77,6 +73,8 @@ public class ReverseLinkedListMain {
             previous = current;
             current = next;
         }
+
+        return previous;
     }
 
 }

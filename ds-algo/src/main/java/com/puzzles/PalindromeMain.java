@@ -7,7 +7,7 @@ import java.util.stream.IntStream;
 /**
  * Program to check whether a string is Palindrome or not
  * <p>
- * Def: A palindromic string is same when its letters are reversed. Like 16461, abcba
+ * 16461, abcba are Palindromes(string == reverse(string))
  *
  * @author Srinath.Rayabarapu
  */

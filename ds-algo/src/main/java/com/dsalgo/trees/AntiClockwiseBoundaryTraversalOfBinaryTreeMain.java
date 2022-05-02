@@ -1,5 +1,7 @@
 package com.dsalgo.trees;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * given a binary tree, print it's boundary i.e left -> bottom -> right bottom to top
  * <p>
@@ -7,7 +9,8 @@ package com.dsalgo.trees;
  *
  * @author Srinath.Rayabarapu
  */
-public class BoundaryTraversalOfBinaryTreeMain {
+@Slf4j
+public class AntiClockwiseBoundaryTraversalOfBinaryTreeMain {
 
     public static void main(String[] args) {
 

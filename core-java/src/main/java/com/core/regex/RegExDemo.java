@@ -26,10 +26,8 @@ public class RegExDemo {
 		Pattern pattern = Pattern.compile(emailIdRegex);
 		Matcher matcher = pattern.matcher("sjdskjd@gmail.cp");
 		System.out.println(matcher.matches());
-		
-		
 	}
-	
+
 	private Pattern pattern;
 	private Matcher matcher;
 

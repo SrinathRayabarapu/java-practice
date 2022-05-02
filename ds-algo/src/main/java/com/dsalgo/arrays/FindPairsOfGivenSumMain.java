@@ -7,7 +7,7 @@ import java.util.Set;
  * handles below cases:
  *
  * 1. given an unsorted array, find pairs which sum equals to a given number
- * 2. given an sorted array, find pairs which sum equals to a given number
+ * 2. given a sorted array, find pairs which sum equals to a given number
  *
  * @author Srinath.Rayabarapu
  */

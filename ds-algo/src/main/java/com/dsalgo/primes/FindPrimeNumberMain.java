@@ -1,4 +1,4 @@
-package com.puzzles;
+package com.dsalgo.primes;
 
 /**
  * Program to find a number Prime or not

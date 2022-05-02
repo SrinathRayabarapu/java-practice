@@ -1,10 +1,13 @@
 package com.dsalgo.trees;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
- * creates a binary tree when we add nodes to it.
+ * this is only simple binary tree - NOT a binary search tree
  *
  * @author Srinath.Rayabarapu
  */
+@Slf4j
 public class CustomBinaryTree {
 
     static TreeNode root;
@@ -57,16 +60,16 @@ public class CustomBinaryTree {
 
     private void printRecursive(TreeNode root){
         if(root == null){
-            System.out.println("Tree is empty!");
+            log.info("Tree is empty!");
             return;
         }
-        System.out.print(root.data);
+        log.info("{}", root.data);
         if(root.leftChild != null){
-            System.out.print(" -> left child : ");
+            log.info(" -> left child : ");
             printRecursive(root.leftChild);
         }
         if(root.rightChild != null){
-            System.out.print (" -> right child : ");
+            log.info(" -> right child : ");
             printRecursive(root.rightChild);
         }
     }

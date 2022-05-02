@@ -1,9 +1,12 @@
 package com.dpattern.structural.decorator;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class Rectangle implements IShape {
 
 	@Override
 	public void draw() {
-		System.out.println("Drawing a Rectangle!");
+		log.info("Drawing a Rectangle..");
 	}
 }

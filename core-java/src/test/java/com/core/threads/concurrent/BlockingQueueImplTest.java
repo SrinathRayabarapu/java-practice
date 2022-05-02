@@ -21,7 +21,7 @@ class BlockingQueueImplTest {
                 try {
                     System.out.println("Enqueuing :: " + "name-"+ counter);
                     blockingQueue.enqueue("name:"+ counter);
-                    Thread.sleep(2000);
+                    Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -34,7 +34,7 @@ class BlockingQueueImplTest {
             while(counter < 5){
                 try {
                     System.out.println("Dequeuing :: " + blockingQueue.dequeue());
-                    Thread.sleep(2000);
+                    Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

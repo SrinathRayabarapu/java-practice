@@ -1,5 +1,7 @@
 package com.dpattern.structural.proxy;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,16 +11,17 @@ import java.util.List;
  *
  * @author Srinath.Rayabarapu
  */
+@Slf4j
 public class InternetProxy implements IInternet{
 
 	IInternet internet = new RealInternet();
-	static List<String> bannedSitesList = new ArrayList<>();
+	private static List<String> bannedSitesList = new ArrayList<>();
 	
 	static{
-		bannedSitesList.add("site1");
-		bannedSitesList.add("site2");
+		bannedSitesList.add("site1.com");
+		bannedSitesList.add("site2.com");
 		bannedSitesList.add("virus.com");
-		bannedSitesList.add("site4");
+		bannedSitesList.add("site4.com");
 	}
 	
 	@Override
@@ -27,7 +30,7 @@ public class InternetProxy implements IInternet{
 		if(!bannedSitesList.contains(site)){
 			internet.connectTo(site);
 		} else{
-			System.out.println("Cann't connect to bad site:" + site);
+			log.info("Cann't connect to bad site : {}", site);
 		}
 	}
 }
