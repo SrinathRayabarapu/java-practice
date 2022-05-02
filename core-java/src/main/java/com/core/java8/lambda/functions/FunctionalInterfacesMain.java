@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class FunctionMain {
+public class FunctionalInterfacesMain {
 
     public static void main(String[] args) {
 

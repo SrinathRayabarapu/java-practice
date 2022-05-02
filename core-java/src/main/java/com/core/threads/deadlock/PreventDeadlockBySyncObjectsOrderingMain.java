@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Ways of avoiding Deadlocks:<br/>
  * -> Consistent ordering of lock acquisition helps avoid deadlocks (Current Example)<br/>
- * -> Using timeouts for lock acquisition can help avoiding deadlocks
+ * -> Using timeouts for lock acquisition can help to avoid deadlocks
  *
  * @author Srinath.Rayabarapu
  */
@@ -17,37 +17,31 @@ public class PreventDeadlockBySyncObjectsOrderingMain {
 		final List<String> namesList = new ArrayList<>();
 		final List<String> subjectsList = new ArrayList<>();
 
-		Runnable readNames = new Runnable() {
-			@Override
-			public void run() {				
-				//synchronized is a way to acquire lock on Object
-				synchronized (namesList) {
-					System.out.print("readNames(): Acquired lock on namesList..");
-					try {
-						Thread.sleep(1000);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-					synchronized (subjectsList) {
-						System.out.println("and lock on subjectsList");
-					}
+		Runnable readNames = () -> {
+			//synchronized is a way to acquire lock on Object
+			synchronized (namesList) {
+				System.out.print("readNames(): Acquired lock on namesList..");
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				synchronized (subjectsList) {
+					System.out.println("and lock on subjectsList");
 				}
 			}
 		};
 		
-		Runnable readSubjects = new Runnable() {			
-			@Override
-			public void run() {				
-				synchronized (namesList) {	//subjectsList
-					System.out.print("readSubjects(): Acquired lock on namesList..");
-					try {
-						Thread.sleep(1000);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-					synchronized (subjectsList) { //namesList
-						System.out.println("and lock on subjectsList");
-					}
+		Runnable readSubjects = () -> {
+			synchronized (namesList) {	//subjectsList
+				System.out.print("readSubjects(): Acquired lock on namesList..");
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				synchronized (subjectsList) { //namesList
+					System.out.println("and lock on subjectsList");
 				}
 			}
 		};
