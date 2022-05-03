@@ -1,5 +1,7 @@
 package com.dsalgo.arrays;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,13 +13,14 @@ import java.util.Set;
  *
  * @author Srinath.Rayabarapu
  */
+@Slf4j
 public class FindPairsOfGivenSumMain {
 
     public static void main(String[] args) {
 
         int[] intArray1 = {11, 2, 4, 1, 8, 4, 10, 15, 18, 9, 5};
         int sum = 20;
-        System.out.printf("Finding pairs in unsorted array for sum %d:%n", sum);
+        log.info("Finding pairs in unsorted array for sum : {}", sum);
         // case 1
         // O(n) - time complexity, O(n) - space complexity
         findPairsHashSet(intArray1, sum);
@@ -26,21 +29,23 @@ public class FindPairsOfGivenSumMain {
         // O(n) - time complexity, O(1) - space complexity
         int[] intArray2 = {0, 2, 4, 6, 12, 14, 16, 20, 22, 26};
         sum = 26;
-        System.out.printf("Finding pairs in sorted array for sum %d:%n", sum);
+        log.info("Finding pairs in sorted array for sum : {}", sum);
+
         findPairsWhileLoop(intArray2, sum);
 
     }
 
-    private static void findPairsWhileLoop(int[] intArray2, int sum) {
+    // two pinter logic
+    private static void findPairsWhileLoop(int[] inputArray, int sum) {
         int l = 0;
-        int r = intArray2.length-1;
+        int r = inputArray.length-1;
 
         while (l < r){
-            if(intArray2[l] + intArray2[r] == sum){
-                System.out.println("Pair : " + intArray2[l] +", " + intArray2[r]);
+            if(inputArray[l] + inputArray[r] == sum){
+                log.info("Pair : " + inputArray[l] +", " + inputArray[r]);
                 l++;
                 r--;
-            } else if(intArray2[l] + intArray2[r] > sum){
+            } else if(inputArray[l] + inputArray[r] > sum){
                 r--;
             } else {
                 l++;
@@ -54,7 +59,7 @@ public class FindPairsOfGivenSumMain {
         Set<Integer> intSet = new HashSet<>();
         for (int i = 0; i < intArray.length; i++) {
             if(intSet.contains(sum - intArray[i])){
-                System.out.println("Pair : " + (sum - intArray[i]) + "," + intArray[i]);
+                log.info("Pair : " + (sum - intArray[i]) + "," + intArray[i]);
             }
             intSet.add(intArray[i]);
         }
