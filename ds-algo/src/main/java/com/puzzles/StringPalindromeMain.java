@@ -12,10 +12,12 @@ import lombok.extern.slf4j.Slf4j;
 public class StringPalindromeMain {
 
     public static void main(String[] args) {
-//        String input = "A man, a plan, a canal: Panama";
-        String input = "0P";
+        String input = "A man, a plan, a canal: Panama";
+//        String input = "0P";
 
-        boolean ispalindrome = isStringPalindrome(input);
+//        boolean ispalindrome = isStringPalindrome(input);
+
+        boolean ispalindrome = isPalindrome(input);
 
         if(ispalindrome)
             log.info("'{}' is a palindrome", input);
@@ -23,7 +25,27 @@ public class StringPalindromeMain {
             log.info("{} is NOT a palindrome", input);
     }
 
-    private static boolean isStringPalindrome(String input) {
+    public static boolean isPalindrome(String s) {
+        int start = 0;
+        int end = s.length()-1;
+
+        char[] input = s.toLowerCase().toCharArray();
+
+        while(start < end){
+            if(!Character.isLetterOrDigit(input[start])) {
+                start++;
+            } else if(!Character.isLetterOrDigit(input[end])) {
+                end--;
+            } else if(input[start] == input[end]){
+                start++;
+                end--;
+            }
+        }
+
+        return start == end;
+    }
+
+    public static boolean isStringPalindrome(String input) {
 
         input = input.toLowerCase();
 
