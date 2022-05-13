@@ -1,5 +1,7 @@
 package com.puzzles;
 
+import java.util.function.IntConsumer;
+import java.util.function.Supplier;
 import java.util.stream.IntStream;
 
 /**
@@ -10,19 +12,20 @@ import java.util.stream.IntStream;
  *
  */
 public class PrintSpireTechOddEvenMain {
-	
+
 	public static void main(String[] args) {
-		
-		IntStream.range(1, 51).forEach((i) -> {
+
+		Supplier<IntConsumer> OddEvenSupplier = () -> (i) -> {
 			//System.out.println(i);
-			if(i%3==0 && i%5==0)
+			if (i % 3 == 0 && i % 5 == 0)
 				System.out.println(i + " SpireTech");
-			else if(i%3==0)
+			else if (i % 3 == 0)
 				System.out.println(i + " Spire");
-			else if(i%5==0)
+			else if (i % 5 == 0)
 				System.out.println(i + " Tech");
-		});
-		
+		};
+
+		IntStream.range(1, 51).forEach(OddEvenSupplier.get());
 	}
 
 }

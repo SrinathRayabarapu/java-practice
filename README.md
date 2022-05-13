@@ -11,19 +11,20 @@ TODO :
 4. 
 
 
+```
 Create a sample springboot project with the following:
-Basic Spring boot libraries
-Lombok libraries
+> Basic Spring boot libraries
+> Lombok libraries
 
 
 Need to Learn:
-Docker and Kubernetes practice
-gRPC practice
-RxJava2
-Micronaut
-DockerSwarm
+> Docker and Kubernetes practice
+> gRPC practice
+> RxJava2
+> Micronaut
+> DockerSwarm
 
-
+```
 
 
 
@@ -37,9 +38,6 @@ This project has below modules -
 2. DS-Algorithms
 3. Design Patterns
 4. Hibernate with core Java
-
-
-Note: For Spring/Boot check SpringBootTest and SpringMVCTest projects
 
 --------------------------------------------------------------------------------------------
 
