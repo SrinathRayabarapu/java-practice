@@ -4,43 +4,20 @@
 
 > gradle clean build shadowJar
 
-TODO :
-1. Have a common shared logging - remove duplicate config files
-2. Fix the shared libraries and keep only scoped ones
-3. Test classes are not compiling. Have a common-scoped library to execute them
-4. 
-
-
+**TODO : Learn**
 ```
-Create a sample springboot project with the following:
-> Basic Spring boot libraries
-> Lombok libraries
-
-
-Need to Learn:
+> TDD and Mockito
 > Docker and Kubernetes practice
 > gRPC practice
 > RxJava2
 > Micronaut
 > DockerSwarm
-
 ```
 
 
 
-
+**Need to check below:**
 ```
-~:JAVATEST:~
-
-Description:
-This project has below modules - 
-1. Core/Advanced Java
-2. DS-Algorithms
-3. Design Patterns
-4. Hibernate with core Java
-
---------------------------------------------------------------------------------------------
-
 What's been implemented:
 Data Structures
 AVL Tree
