@@ -23,7 +23,7 @@ public class StringPalindromeMain {
             log.info("{} is NOT a palindrome", input);
     }
 
-    private static boolean isStringPalindrome(String input) {
+    public static boolean isStringPalindrome(String input) {
 
         input = input.toLowerCase();
 

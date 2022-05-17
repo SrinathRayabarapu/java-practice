@@ -11,8 +11,9 @@ repositories {
 
 dependencies {
     implementation project(":util")
+    implementation 'com.google.code.gson:gson:2.3.1'
 
-    implementation 'junit:junit:4.12'
+    implementation 'junit:junit:4.13.2'
 }
 
 test {
