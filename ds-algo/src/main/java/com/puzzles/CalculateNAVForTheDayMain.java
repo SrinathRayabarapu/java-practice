@@ -97,7 +97,6 @@ class Price{
     private String date;
     private String security;
     private Double price;
-
     public String getDate(){
         return date;
     }
@@ -116,7 +115,6 @@ class Price{
     public void setPrice(Double price){
         this.price = price;
     }
-
     @Override
     public String toString() {
         return "Price{" +
@@ -132,7 +130,6 @@ class Holding{
     private Integer quantity;
     private Double price;
     private String portfolio;
-
     public String getDate(){
         return date;
     }
@@ -163,7 +160,6 @@ class Holding{
     public void setPrice(Double price){
         this.price = price;
     }
-
     @Override
     public String toString() {
         return "Holding{" +
