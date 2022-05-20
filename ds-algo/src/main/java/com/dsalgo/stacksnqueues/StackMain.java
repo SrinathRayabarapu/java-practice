@@ -8,13 +8,42 @@ import java.util.Stack;
 public class StackMain {
 
     public static void main(String[] args) {
+        Stack<String> stack = buildStack();
+        printStack(stack);
+
+        stack = buildStack();
+        reversePrintStack(stack);
+
+        stack = buildStack();
+        reverseStack(stack);
+        printStack(stack);
+    }
+
+    private static void reverseStack(Stack<String> stack) {
+        // TODO
+    }
+
+    private static Stack<String> buildStack() {
         Stack<String> stack = new Stack();
 
         stack.push("hey");
-        stack.push("Srinath");
+        stack.push("srinath");
+        stack.push("rayabarapu");
 
+        return stack;
+    }
+
+    private static void printStack(Stack<String> stack) {
         while(!stack.isEmpty()) {
             log.info(stack.pop());
+        }
+    }
+
+    private static void reversePrintStack(Stack<String> stack) {
+        while (!stack.isEmpty()){
+            String temp = stack.pop();
+            reversePrintStack(stack);
+            log.info(temp);
         }
     }
 

@@ -7,7 +7,7 @@ package com.dsalgo.stacksnqueues;
  * 
  * @author Srinath.Rayabarapu
  */
-public class CustomQueueArraysMain {
+public class CustomQueueMain {
 	
 	public static void main(String[] args) {
 		

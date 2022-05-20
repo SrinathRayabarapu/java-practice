@@ -35,5 +35,9 @@ public class MatrixPracticeMain {
             }
             System.out.println("");
         }
+
+        // TODO
+        // reverse the matrix up-down and right-left
+
     }
 }

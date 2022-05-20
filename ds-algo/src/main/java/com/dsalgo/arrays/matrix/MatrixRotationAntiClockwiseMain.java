@@ -6,7 +6,7 @@ package com.dsalgo.arrays.matrix;
  * @author srayabar
  *
  */
-public class MatrixRotationAntiClockwiseDemo {
+public class MatrixRotationAntiClockwiseMain {
 	
 	public static void main(String[] args) {
 		

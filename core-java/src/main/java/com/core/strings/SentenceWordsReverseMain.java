@@ -24,7 +24,7 @@ public class SentenceWordsReverseMain {
 }
 
 class Sort {
-	String str = new String("The gate to Java is here");
+	String str = "The gate to Java is here";
 	StringTokenizer tokenizer;
 	String temp_str[], str1, str2;
 
@@ -35,10 +35,10 @@ class Sort {
 		words = tokenizer.countTokens();
 		temp_str = new String[words];
 
-		str2 = new String(" ");
+		str2 = "";
 		i = 0;
 		while (tokenizer.hasMoreElements()) {
-			str1 = new String(" ");
+			str1 = "";
 			temp_str[i] = tokenizer.nextToken();
 			for (j = temp_str[i].length() - 1; j >= 0; j--)
 				str1 = str1 + temp_str[i].charAt(j);

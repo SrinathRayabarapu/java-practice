@@ -2,7 +2,13 @@ package com.core.java8.streams;
 
 import com.core.comparable.Employee;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -29,7 +35,7 @@ public class StreamsMain {
         myList
                 .stream()
                 .filter(s -> s.startsWith("c"))//accepts a predicate
-                .map(String::toUpperCase)//accepts a function which can alter the passes element
+                .map(String::toUpperCase) // produces a different stream from input stream
                 .sorted()//can accept a comparator - creates sorted view stream without changing backed collection
                 .forEach(System.out::println);//accepts a consumer
 
@@ -125,7 +131,7 @@ public class StreamsMain {
         people.put("Steve", Arrays.asList("555-6654", "555-3242"));
 
         List<String> phones = people.values().stream()
-                .flatMap(Collection::stream)
+                .flatMap(Collection::stream) // flatmap produces a single stream out of stream of streams
                 .collect(Collectors.toList());
 
         System.out.println(phones);

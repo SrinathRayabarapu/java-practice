@@ -9,7 +9,6 @@ import lombok.extern.slf4j.Slf4j;
  *
  * @param <T>
  */
-
 @Slf4j
 class CustomStack<T> {
 

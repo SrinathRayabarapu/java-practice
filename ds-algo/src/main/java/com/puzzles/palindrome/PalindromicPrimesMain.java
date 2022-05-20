@@ -1,4 +1,4 @@
-package com.puzzles;
+package com.puzzles.palindrome;
 
 /**
  * given a number, print all primes within which they are palindromic.

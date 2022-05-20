@@ -12,7 +12,7 @@ package com.dsalgo.arrays.matrix;
 
  * @author srayabar
  */
-public class MatrixRotationClockwiseDemo {
+public class MatrixRotationClockwiseMain {
 	
 	public static void main(String[] args) {
 		int arr[][] = { { 1, 2, 3, 34, 2, 4 }, 

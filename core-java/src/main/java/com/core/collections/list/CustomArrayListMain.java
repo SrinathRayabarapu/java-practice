@@ -15,10 +15,10 @@ public class CustomArrayListMain {
 
     public static void main(String[] args) {
 
-        CustomArrayList<Integer> list = new CustomArrayList<>();
+        CustomArrayList<Integer> list = new CustomArrayList<>(2);
         list.add(10);
         list.add(20);
-        list.add(30);
+//        list.add(30);
         System.out.println(list);
 
         int value = list.get(0);
@@ -26,6 +26,9 @@ public class CustomArrayListMain {
 
         int count = list.count();
         System.out.println(count);
+
+        value = list.get(2);
+        System.out.println(value);
 
     }
 
@@ -38,23 +41,28 @@ public class CustomArrayListMain {
  */
 class CustomArrayList<T> {
 
-    private int initial_size = 10;
-    private Object[] items = new Object[initial_size];
+    private final int initialSize;
+    private T[] items;
     private int currentIndex = 0;
+
+    public CustomArrayList(int initialSize) {
+        this.initialSize = initialSize;
+        this.items = (T[]) new Object[initialSize];
+    }
 
     public void add(T t) {
         if (currentIndex == items.length) {
-            items = Arrays.copyOf(items, initial_size * 2);
+            items = Arrays.copyOf(items, initialSize * 2);
         }
-        items[currentIndex] = t;
-        currentIndex++;
+        items[currentIndex++] = t;
+//        currentIndex++;
     }
 
     public T get(int index) {
         if (index < 0 || index > items.length) {
             throw new ArrayIndexOutOfBoundsException();
         }
-        return (T) items[index];
+        return items[index];
     }
 
     public int count() {

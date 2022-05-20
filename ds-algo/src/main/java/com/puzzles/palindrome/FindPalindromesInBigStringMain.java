@@ -1,4 +1,4 @@
-package com.dsalgo.arrays;
+package com.puzzles.palindrome;
 
 /**
  * given a long string, find long palindromic substring.

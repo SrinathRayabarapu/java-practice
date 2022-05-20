@@ -188,24 +188,6 @@ public class StringFunctions {
         }
     }
 
-    public static final boolean isPalindromeWithAdditionalStorage(String string) {
-        String reversed = new StringBuilder(string).reverse().toString();
-        return string.equals(reversed);
-    }
-
-    public static final boolean isPalindromeInPlace(String string) {
-        char[] array = string.toCharArray();
-        int length = array.length - 1;
-        int half = Math.round(array.length / 2);
-        char a, b;
-        for (int i = length; i >= half; i--) {
-            a = array[length - i];
-            b = array[i];
-            if (a != b)
-                return false;
-        }
-        return true;
-    }
 
     public static final String[] generateSubsets(String input) {
         int length = input.length();
