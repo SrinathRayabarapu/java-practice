@@ -1,7 +1,10 @@
 package com.dsalgo.strings;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.HashSet;
 import java.util.Set;
+import java.util.Stack;
 
 /**
  * given a string,
@@ -10,6 +13,7 @@ import java.util.Set;
  *
  * @author Srinath.Rayabarapu
  */
+@Slf4j
 public class StringDuplicateCharactersMain {
 
     public static void main(String[] args) {
@@ -21,6 +25,79 @@ public class StringDuplicateCharactersMain {
 
         printDuplicatesWithCount(input);
         printMaxDuplicateWithCount(input);
+
+        String uniqueCharsString = removeDuplicateCharsFromString(input);
+        log.info("Unique chars string : {}", uniqueCharsString);
+
+        log.info("Input : {}", input);
+
+        int uniqueCharCount = 2;
+        uniqueCharsString = removeDuplicateCharsFromStringWithCharCount(input, uniqueCharCount);
+        log.info("Unique chars string with count : {}", uniqueCharsString);
+
+        uniqueCharsString = removeAdjacentDuplicateCharacters(input);
+        log.info("After adjacent chars removal : {}", uniqueCharsString);
+
+    }
+
+    /**
+     * example : aabccba
+     *
+     * @param input
+     * @return
+     */
+    private static String removeAdjacentDuplicateCharacters(String input) {
+
+        Stack<Character> stack = new Stack<>();
+
+        for (int i = 0; i < input.length(); i++) {
+            if(!stack.isEmpty() && stack.peek() == input.charAt(i)){
+                stack.pop();
+            } else {
+                stack.push(input.charAt(i));
+            }
+        }
+
+        String output = "";
+        while (!stack.isEmpty()){
+            output = stack.pop() + output;
+        }
+
+        return output;
+    }
+
+    private static String removeDuplicateCharsFromStringWithCharCount(String input, int uniqueCharCount) {
+
+        Set<Character> hashSet = new HashSet<>();
+        String output = "";
+        int tempCount = 0;
+        for (int i = 0; i < input.length(); i++) {
+            if(!hashSet.contains(input.charAt(i))){
+                tempCount = uniqueCharCount;
+                output += input.charAt(i);
+                tempCount--;
+                hashSet.add(input.charAt(i));
+            } else {
+                if(tempCount > 0){
+                    output += input.charAt(i);
+                    tempCount--;
+                }
+            }
+        }
+        return output;
+    }
+
+    private static String removeDuplicateCharsFromString(String input) {
+
+        Set<Character> hashSet = new HashSet<>();
+        String output = "";
+        for (int i = 0; i < input.length(); i++) {
+            if(!hashSet.contains(input.charAt(i))){
+                output += input.charAt(i);
+                hashSet.add(input.charAt(i));
+            }
+        }
+        return output;
     }
 
     /**
@@ -35,7 +112,7 @@ public class StringDuplicateCharactersMain {
         }
         char maxDuplicate = ' ';
         int count=0;
-        for (int i = 0; i < asciiArray.length; i++) { //constant time
+        for (int i = 0; i < asciiArray.length; i++) { //constant time i.e 256
             if (asciiArray[i] != 0) {
                 maxDuplicate = (char) i;
                 if(count < asciiArray[i]){
@@ -58,6 +135,7 @@ public class StringDuplicateCharactersMain {
         }
     }
 
+    // original string character order is not maintained
     private static void removeDuplicatesUsingArrays(String input) {
         int[] asciiArray = new int[256];
         for (char c : input.toCharArray()) { // O(n) time
@@ -72,6 +150,7 @@ public class StringDuplicateCharactersMain {
         System.out.println(unique);
     }
 
+    // original string character order is not maintained
     private static void removeDuplicatesUsingHashSet(String input) {
         Set<Character> charSet = new HashSet<>();
         for (char c : input.toCharArray()) {

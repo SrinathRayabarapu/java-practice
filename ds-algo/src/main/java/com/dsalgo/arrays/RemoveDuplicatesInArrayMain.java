@@ -12,11 +12,11 @@ import java.util.Arrays;
  * @author Srinath.Rayabarapu
  */
 @Slf4j
-public class ArraysRemoveDuplicatesMain {
+public class RemoveDuplicatesInArrayMain {
 
     public static void main(String[] args) {
 
-        int[] nums = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4, 4};
+//        int[] nums = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4, 4};
 
         /*
         int uniqueArrayLength = removeDuplicatesWithExtraSpace(nums);
@@ -27,16 +27,44 @@ public class ArraysRemoveDuplicatesMain {
         */
 
         int[] nums1 = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4, 4};
+        int uniqueArrayLength = removeDuplicatesWithConstantExtraSpaceBest(nums1);
+        log.info("BEST Unique elements with constant space : {}", uniqueArrayLength);
+        log.info("Modified Array : {}", Arrays.toString(nums1));
 
         // returns unique elements count
-        int uniqueArrayLength = bestRemoveDuplicatesWithoutExtraSpace(nums1);
-        log.info("BEST Unique elements without extra space : {}", uniqueArrayLength);
-        log.info(Arrays.toString(nums1));
+//        int uniqueArrayLength = bestRemoveDuplicatesWithoutExtraSpace(nums1);
+//        log.info("BEST Unique elements without extra space : {}", uniqueArrayLength);
+//        log.info(Arrays.toString(nums1));
 
-        int[] num2 = {2, 3, 1, 2, 3};
-        findDuplicates(num2);
+//        int[] num2 = {2, 3, 1, 2, 3};
+//        findDuplicates(num2);
     }
 
+    /**
+     * TC: O(n)
+     * SC : O(1)
+     */
+    private static int removeDuplicatesWithConstantExtraSpaceBest(int[] nums1) {
+
+        int length = nums1.length;
+
+        if(length == 0 || length == 1){
+            return length;
+        }
+
+        int j=0;
+        for (int i = 0; i < length-1; i++) {
+            if(nums1[i] != nums1[i+1]){ // if unique, copy i value to j and increment j. j is the pointer at which we copy unique value
+                nums1[j++] = nums1[i];
+            }
+        }
+
+        nums1[j++] = nums1[length-1];
+
+        return j;
+    }
+
+    // TODO - understand this
     private static void findDuplicates(int[] arr) {
         boolean found = false;
         for (int i = 0; i < arr.length; i++) {

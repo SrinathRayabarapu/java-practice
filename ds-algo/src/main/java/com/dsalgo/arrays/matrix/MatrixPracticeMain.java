@@ -39,5 +39,9 @@ public class MatrixPracticeMain {
         // TODO
         // reverse the matrix up-down and right-left
 
+        // many other appraoches are here - do check and practice
+        // https://levelup.gitconnected.com/make-way-for-the-matrix-a-complete-guide-to-solving-2d-array-coding-problems-725096d122d9
+        // https://www.youtube.com/watch?v=HMqUv7zmxmo&ab_channel=ProgrammingTutorials
+
     }
 }
