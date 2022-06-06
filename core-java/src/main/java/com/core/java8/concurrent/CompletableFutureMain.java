@@ -1,5 +1,6 @@
 package com.core.java8.concurrent;
 
+import java.time.Duration;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
@@ -13,8 +14,9 @@ public class CompletableFutureMain {
 
     public static void main(String[] args) {
         try {
-            basicForm();
-            chainOfActions();
+//            basicForm();
+//            chainOfActions();
+            chainOfActionsWithExceptions();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -30,6 +32,30 @@ public class CompletableFutureMain {
         String s = completableFuture.get(); // blocking call
         System.out.println(s);
 //        Thread.sleep(1000);
+    }
+
+    long calculateDaysBetweenDates(String startDate, String endDate) {
+        startDate = "2020-01-01";
+        endDate = "2020-01-02";
+        Duration duration = Duration.between(java.time.LocalDate.parse(startDate).atStartOfDay(),
+                java.time.LocalDate.parse(endDate).atStartOfDay());
+        return duration.toDays();
+    }
+
+    private static void chainOfActionsWithExceptions() throws InterruptedException {
+
+        CompletableFuture.supplyAsync(() -> {
+            throw new RuntimeException("first async exception");
+        }).thenApplyAsync(result -> {
+            return result + ", two";
+        }).thenApply(result -> {
+            return result + ", three";
+        }).thenAccept(result -> {
+            System.out.println(result);
+        });
+
+        Thread.sleep(2000);
+
     }
 
     private static void chainOfActions() throws InterruptedException {
