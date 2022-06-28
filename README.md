@@ -6,12 +6,18 @@
 
 **TODO : Learn**
 ```
-> TDD and Mockito
-> Docker and Kubernetes practice
+> TDD and Mockito/JUnit 5
+> Docker and Kubernetes Scaling up and down
 > gRPC practice
 > RxJava2
 > Micronaut
 > DockerSwarm
+> GraphQL
+> SAGA implementations
+> Spring Cloud
+> PCI fundamentals
+> Docker Vs Kubernetes
+
 ```
 
 

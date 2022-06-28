@@ -33,7 +33,10 @@ public class LongestUniqueCharsSubStringMain {
             return input.length();
         }
 
-        int i=0, j=0, max=0;
+        int i=0;
+        int j=0;
+        int max=0;
+
         Set<Character> set = new HashSet<>();
 
         String maxSubString = ""; //optional

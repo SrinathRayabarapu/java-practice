@@ -24,7 +24,6 @@ public class CustomDoublyLinkedListDemo1{
 		dbLinkedList.addFirst(10);
 		
 		System.out.println(dbLinkedList.removeLast());
-		
 	}
 
 }
