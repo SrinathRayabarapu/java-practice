@@ -13,7 +13,7 @@ package com.puzzles;
  *
  * @author Srinath.Rayabarapu
  */
-public class ArmstrongMain {
+public class ArmstrongNumberMain {
 
     public static void main(String args[]) {
 

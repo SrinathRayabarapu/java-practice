@@ -4,7 +4,8 @@ public class DoublyNode {
 
     public int key;
     public int value;
-    public DoublyNode pre;
+
+    public DoublyNode previous;
     public DoublyNode next;
 
     public DoublyNode(int key, int value){

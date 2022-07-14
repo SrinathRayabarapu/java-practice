@@ -1,5 +1,7 @@
 package com.dsalgo.linkedlist;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * given two linked lists which has common merging point, find it.
  * <p>
@@ -10,6 +12,7 @@ package com.dsalgo.linkedlist;
  *
  * @author Srinath.Rayabarapu
  */
+@Slf4j
 public class FindMergePointOfLinkedListsMain {
 
     public static void main(String[] args) {
@@ -20,7 +23,7 @@ public class FindMergePointOfLinkedListsMain {
         Node n3 = new Node(30);
         Node n4 = new Node(40);
         Node n5 = new Node(50);
-        Node n6 = new Node(60);
+        Node n6 = new Node(60); // merging point
         Node n7 = new Node(70);
         Node n8 = new Node(80);
 
@@ -35,7 +38,7 @@ public class FindMergePointOfLinkedListsMain {
         // list 2
         Node m1 = new Node(11);
         Node m2 = new Node(21);
-        Node m3 = new Node(60);
+        Node m3 = new Node(60); // merging point
         Node m4 = new Node(70);
         Node m5 = new Node(80);
 
@@ -53,9 +56,10 @@ public class FindMergePointOfLinkedListsMain {
         // finding lengths
         int length1 = findLength(n1);
         int length2 = findLength(m1);
-        Node longer = null, shorter = null;
+        Node longer;
+        Node shorter;
 
-        // finding difference and identifying the linked lists
+        // finding difference and identifying the longer and shorter linked lists
         int difference = 0;
         if (length1 < length2) {
             difference = length2 - length1;
@@ -67,22 +71,24 @@ public class FindMergePointOfLinkedListsMain {
             shorter = m1;
         }
 
+        // advancing the longer linked list
         while (difference > 0) {
             longer = longer.getNext();
             difference--;
         }
 
+        // compare two linked lists
         while (longer.getData() != shorter.getData()) {
             longer = longer.getNext();
             shorter = shorter.getNext();
         }
 
-        System.out.println("Merge point is at : " + longer);
+        log.info("Merge point is at : {}", longer);
 
     }
 
-    private static int findLength(Node m1) {
-        Node current = m1;
+    private static int findLength(Node node) {
+        Node current = node;
         int length = 0;
         while (current != null) {
             current = current.getNext();

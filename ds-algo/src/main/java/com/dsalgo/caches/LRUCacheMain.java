@@ -58,106 +58,101 @@ public class LRUCacheMain {
         lru.add(5);
         lru.display();
     }
+}
 
-    /**
-     * LRU implementation class
-     */
-    static class LRUWithDeque {
+class LRUCache {
 
-        Deque<Integer> queue;
-        int capacity = 0;
+    private DoublyNode head, tail;
+    private int capacity, count;
+    private Map<Integer, DoublyNode> map;
 
-        LRUWithDeque(int capacity) {
-            this.capacity = capacity;
-            this.queue = new LinkedList<>();
-        }
-
-        void add(Integer ele) {
-            if (!queue.contains(ele)) {
-                //add it
-                if (queue.size() == capacity) {
-                    queue.removeLast();
-                }
-            } else {
-                // check lru logic
-                queue.remove(ele);
-            }
-            queue.push(ele);
-        }
-
-        void display() {
-            Iterator<Integer> iterator = queue.iterator();
-            while (iterator.hasNext()) {
-                System.out.print(iterator.next() + " ");
-            }
-        }
-
+    public LRUCache(int capacity) {
+        this.capacity = capacity;
+        head = new DoublyNode(0, 0);
+        tail = new DoublyNode(0, 0);
+        head.previous = null;
+        head.next = tail;
+        tail.previous = head;
+        tail.next = null;
+        map = new HashMap<>();
     }
 
-    static class LRUCache {
-
-        private DoublyNode head, tail;
-        private int capacity, count;
-        private Map<Integer, DoublyNode> map;
-
-        public LRUCache(int capacity) {
-            this.capacity = capacity;
-            head = new DoublyNode(0, 0);
-            tail = new DoublyNode(0, 0);
-            head.pre = null;
-            head.next = tail;
-            tail.pre = head;
-            tail.next = null;
-            map = new HashMap<>();
+    public int get(int key) {
+        if (map.containsKey(key)) {
+            DoublyNode node = map.get(key);
+            deleteNode(node);
+            addToHead(node);
+            System.out.printf("Found value %d for the key %d%n", node.value, key);
+            return node.value;
         }
+        System.out.printf("Didn't find any value for the key %d%n", key);
+        // in case no key found in cache
+        return -1;
+    }
 
-        public int get(int key) {
-            if (map.containsKey(key)) {
-                DoublyNode node = map.get(key);
-                deleteNode(node);
-                addToHead(node);
-                System.out.printf("Found value %d for the key %d%n", node.value, key);
-                return node.value;
-            }
-            System.out.printf("Didn't find any value for the key %d%n", key);
-            // in case no key found in cache
-            return -1;
-        }
+    private void addToHead(DoublyNode node) {
+        node.next = head.next;
+        node.next.previous = node;
+        node.previous = head;
+        head.next = node;
+    }
 
-        private void addToHead(DoublyNode node) {
-            node.next = head.next;
-            node.next.pre = node;
-            node.pre = head;
-            head.next = node;
-        }
+    private void deleteNode(DoublyNode node) {
+        node.previous.next = node.next;
+        node.next.previous = node.previous;
+    }
 
-        private void deleteNode(DoublyNode node) {
-            node.pre.next = node.next;
-            node.next.pre = node.pre;
-        }
-
-        public void set(int key, int value) {
-            if (map.containsKey(key)) {
-                DoublyNode node = map.get(key);
-                node.value = value;
-                map.remove(key);
-                deleteNode(node);
-                addToHead(node);
-                map.put(key, node);
-            } else {
-                DoublyNode node = new DoublyNode(key, value);
-                if (map.size() == capacity) {
-                    map.remove(tail.pre.key);
-                    deleteNode(tail.pre);
-                    addToHead(node);
-                    map.put(key, node);
-                } else {
-                    addToHead(node);
-                    map.put(key, node);
-                }
+    public void set(int key, int value) {
+        DoublyNode node;
+        if (map.containsKey(key)) {
+            node = map.get(key);
+            node.value = value;
+            map.remove(key);
+            deleteNode(node);
+        } else {
+            node = new DoublyNode(key, value);
+            if (map.size() == capacity) {
+                map.remove(tail.previous.key);
+                deleteNode(tail.previous);
             }
         }
+        addToHead(node);
+        map.put(key, node);
+    }
 
+}
+
+/**
+ * LRU implementation class
+ */
+class LRUWithDeque {
+
+    Deque<Integer> queue;
+    int capacity = 0;
+
+    LRUWithDeque(int capacity) {
+        this.capacity = capacity;
+        this.queue = new LinkedList<>();
+    }
+
+    void add(Integer ele) {
+        if (!queue.contains(ele)) {
+            //add it
+            if (queue.size() == capacity) {
+                queue.removeLast();
+            }
+        } else {
+            // check lru logic
+            queue.remove(ele);
+        }
+        queue.push(ele);
+    }
+
+    void display() {
+        Iterator<Integer> iterator = queue.iterator();
+        while (iterator.hasNext()) {
+            System.out.print(iterator.next() + " ");
+        }
     }
 
 }
