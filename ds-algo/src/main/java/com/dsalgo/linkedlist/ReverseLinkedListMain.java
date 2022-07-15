@@ -68,10 +68,10 @@ public class ReverseLinkedListMain {
         Node previous = null; // required to make this as last node
 
         while(current != null){
-            Node next = current.getNext(); // required to go to next element/continue loop
+            Node next = current.getNext();
             current.setNext(previous);
             previous = current;
-            current = next;
+            current = next; // required to go to next element in loop
         }
 
         return previous;

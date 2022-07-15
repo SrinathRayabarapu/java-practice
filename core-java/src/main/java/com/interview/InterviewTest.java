@@ -1,4 +1,4 @@
-package com.test;
+package com.interview;
 
 public class InterviewTest {
 
