@@ -3,7 +3,7 @@ package com.dsalgo.arrays;
 /**
  * Given an array of n non-negative integers and a non-negative target integer s,
  * find the length of smallest contiguous subarray where sum of all elements of the subarray
- * is equal to target integer ’s’. If there isn't one, return -1 instead.
+ * is equal to target integer 's'. If there isn't one, return -1 instead.
  *
  * Sample Input - [2,3,7,0,0,0,2,1], 10
  * Sample Output - 2
