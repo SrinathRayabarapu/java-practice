@@ -10,9 +10,8 @@ import static com.dsalgo.linkedlist.LinkedListUtil.printLinkedList;
  *
  * @author Srinath.Rayabarapu
  */
-
 @Slf4j
-public class MergeTwoSortedLinkedLIstsMain {
+public class MergeTwoSortedLinkedListsMain {
 
     public static void main(String[] args) {
 

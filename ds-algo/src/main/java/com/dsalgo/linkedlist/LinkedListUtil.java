@@ -11,6 +11,9 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class LinkedListUtil {
 
+    private LinkedListUtil() {
+    }
+
     /**
      * prints passed linked list
      * @param head

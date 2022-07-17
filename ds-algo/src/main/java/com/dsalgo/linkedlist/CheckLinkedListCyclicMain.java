@@ -1,13 +1,16 @@
 package com.dsalgo.linkedlist;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * given a linked list,
  * 1. check whether it is cyclic or not.
- * 2. find one node of a cycle
+ * 2. find the first node of a cycle
  * 3. remove cycle in list
  *
  * @author Srinath.Rayabarapu
  */
+@Slf4j
 public class CheckLinkedListCyclicMain {
 
     public static void main(String[] args) {
@@ -25,22 +28,22 @@ public class CheckLinkedListCyclicMain {
         n2.setNext(n3);
         n3.setNext(n4);
         n4.setNext(n5);
-        n5.setNext(n6);
-        n6.setNext(n7);
-        n7.setNext(n8);
-        n8.setNext(n4); // last node is pointing back to n4
+        n5.setNext(n2);
+//        n6.setNext(n7);
+//        n7.setNext(n8);
+//        n8.setNext(n4); // last node is pointing back to n4
 
         if (isLoopPresent(n1)) {
-            System.out.println("List is cyclic!");
+            log.info("List is cyclic!");
         } else {
-            System.out.println("List is NOT cyclic!");
+            log.info("List is NOT cyclic!");
         }
 
         printFirstNodeOfCycle(n1);
 
         Node head = removeCycleAndReturnHead(n1);
 
-        System.out.println("Cycle removed - Printing the list");
+        log.info("Cycle removed - Printing the list");
 
         while (head != null) {
             System.out.println(head);
@@ -90,6 +93,9 @@ public class CheckLinkedListCyclicMain {
             slow = slow.getNext();
             fast = fast.getNext().getNext();
 
+            log.info("slow : {}", slow.toString());
+            log.info("fast : {}", fast.toString());
+
             if (slow == fast) {
                 // imp: assign slow pointer to start node and loop till it matches with fast
                 slow = head;
@@ -97,7 +103,7 @@ public class CheckLinkedListCyclicMain {
                     slow = slow.getNext();
                     fast = fast.getNext();
                 }
-                System.out.println("Cycle starts at : " + slow);
+                log.info("Cycle starts at : {}", slow);
                 break;
             }
         }
@@ -112,6 +118,13 @@ public class CheckLinkedListCyclicMain {
 
     }
 
+    /**
+     * TC: O(n)
+     * SC: O(1)
+     *
+     * @param head
+     * @return
+     */
     // find whether a cycle exists
     private static boolean isLoopPresent(Node head) {
 
