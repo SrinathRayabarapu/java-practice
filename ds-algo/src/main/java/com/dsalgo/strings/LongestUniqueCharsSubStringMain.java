@@ -22,7 +22,8 @@ public class LongestUniqueCharsSubStringMain {
     }
 
     /**
-     * O(2n) time, removing constants it is O(n)
+     * TC: O(n)
+     * SC: O(n)
      *
      * @param input
      * @return

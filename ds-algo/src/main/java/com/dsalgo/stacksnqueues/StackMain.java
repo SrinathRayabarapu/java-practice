@@ -4,6 +4,8 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.util.Stack;
 
+import static com.dsalgo.stacksnqueues.StackUtil.printStack;
+
 @Slf4j
 public class StackMain {
 
@@ -31,12 +33,6 @@ public class StackMain {
         stack.push("rayabarapu");
 
         return stack;
-    }
-
-    private static void printStack(Stack<String> stack) {
-        while(!stack.isEmpty()) {
-            log.info(stack.pop());
-        }
     }
 
     private static void reversePrintStack(Stack<String> stack) {
