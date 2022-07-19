@@ -4,7 +4,6 @@ package com.dpattern.structural.facade;
  * sample complex class for complex job
  * 
  * @author Srinath.Rayabarapu
- *
  */
 public class ShapeMakerFacade implements IShapeMakerFacade {
 

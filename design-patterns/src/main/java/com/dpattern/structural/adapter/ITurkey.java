@@ -1,6 +1,6 @@
 package com.dpattern.structural.adapter;
 
-public interface Turkey {
+public interface ITurkey {
 	
 	public void gobble();
 	public void fly();

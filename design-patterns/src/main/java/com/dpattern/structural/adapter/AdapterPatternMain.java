@@ -1,38 +1,42 @@
 package com.dpattern.structural.adapter;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
- * The adapter pattern convert the interface of a class into another interface clients expect. Adapter lets classes work
- * together that couldn't otherwise because of incompatible interfaces.
+ * The adapter pattern convert the interface of a class into another interface that client expects. Adapter lets
+ * classes work together that couldn't otherwise because of incompatible interfaces.
  *
  * @author Srinath.Rayabarapu
  */
+@Slf4j
 public class AdapterPatternMain {
 	
 	public static void main(String[] args) {
 		
-		Duck mallardDuck = new MallardDuck();
-		Turkey wildTurkey = new WildTurkey();
+		IDuck mallardDuck = new MallardDuck();
+		ITurkey wildTurkey = new WildITurkey();
 		
-		Duck turkeyToDuck = new TurkeytoDuckAdapter(wildTurkey);
+		IDuck turkeyToIDuck = new TurkeytoIDuckAdapter(wildTurkey);
 		
-		System.out.println("The Duck says..");
+		log.info("The Duck says..");
 		callDuck(mallardDuck);
-		
-		System.out.println("\nThe Turkey says..");
+
+		log.info("The Turkey says..");
 		callTurkey(wildTurkey);
 
-		System.out.println("\nThe TurkeyAdapter says..");
-		callDuck(turkeyToDuck);
+		log.info("The TurkeyAdapter says..");
+		callDuck(turkeyToIDuck);
 		
 	}
 
-	private static void callTurkey(Turkey wildTurkey) {
+	private static void callTurkey(ITurkey wildTurkey) {
 		wildTurkey.gobble();
 		wildTurkey.fly();
 	}
 
-	private static void callDuck(Duck turkeyToDuck) {
-		turkeyToDuck.quack();
-		turkeyToDuck.fly();
+	private static void callDuck(IDuck turkeyToIDuck) {
+		turkeyToIDuck.quack();
+		turkeyToIDuck.fly();
 	}
+
 }

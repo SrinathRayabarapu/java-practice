@@ -8,15 +8,14 @@ class Director {
 		this.builder = builderType;
 	}
 	
-	public Home getComplexObjectOfHome() 
-    { 
+	public Home getComplexObjectOfHome() {
         return this.builder.getComplexHomeObject(); 
-    } 
+    }
 	
 	public void manageRequiredHomeConstruction() {
-        this.builder.buildFloor(); 
-        this.builder.buildWalls(); 
-        this.builder.bulidTerrace(); 
+        this.builder.buildFloor();
+        this.builder.buildWalls();
+        this.builder.bulidTerrace();
     }
 	
 }

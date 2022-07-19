@@ -1,14 +1,17 @@
 package com.dpattern.structural.adapter;
 
-public class MallardDuck implements Duck{
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+public class MallardDuck implements IDuck{
 
 	@Override
 	public void quack() {
-		System.out.println("Quack..");
+		log.info("Quack..");
 	}
 	
 	@Override
 	public void fly() {
-		System.out.println("I'm flying..");
+		log.info("I'm flying..");
 	}
 }

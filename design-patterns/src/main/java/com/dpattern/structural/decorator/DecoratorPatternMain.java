@@ -7,7 +7,7 @@ package com.dpattern.structural.decorator;
  * Acts as a wrapper to existing class.
  *
  * This pattern creates a decorator class which wraps the original class and provides additional functionality keeping
- * class methods signature intact.
+ * class methods' signature intact.
  *
  * @author Srinath.Rayabarapu
  */

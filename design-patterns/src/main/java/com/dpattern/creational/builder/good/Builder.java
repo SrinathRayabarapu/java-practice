@@ -7,8 +7,7 @@ interface Builder {
     public void buildWalls(); 
   
     public void bulidTerrace(); 
-  
-  
+
     public Home getComplexHomeObject();  
 	
 }

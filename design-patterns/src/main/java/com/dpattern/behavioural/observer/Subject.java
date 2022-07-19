@@ -1,5 +1,7 @@
 package com.dpattern.behavioural.observer;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,6 +10,7 @@ import java.util.List;
  *
  * @author Srinath.Rayabarapu
  */
+@Slf4j
 public class Subject {
 
     private int state;
@@ -19,7 +22,7 @@ public class Subject {
 
     public void setState(int state) {
         this.state = state;
-        System.out.println("State changed to " + state);
+        log.info("State changed to " + state);
         notifyAllObservers();
     }
 
@@ -29,7 +32,7 @@ public class Subject {
 
     private void notifyAllObservers() {
         if(this.observersList.isEmpty()){
-            System.out.println("No Observers to notify!");
+            log.info("No Observers to notify!");
         }
         for (Observer observer : this.observersList) {
             observer.update();

@@ -4,6 +4,14 @@ public class Home {
 	
 	public String floor; 
 	public String walls; 
-	public String terrace; 
-	
+	public String terrace;
+
+	@Override
+	public String toString() {
+		return "Home{" +
+				"floor='" + floor + '\'' +
+				", walls='" + walls + '\'' +
+				", terrace='" + terrace + '\'' +
+				'}';
+	}
 }

@@ -3,15 +3,15 @@ package com.dpattern.structural.adapter;
 import java.util.stream.IntStream;
 
 /**
- * Adapter class to convert Turkey in to Duck
+ * Adapter class to convert Turkey in to IDuck
  *
  * @author Srinath.Rayabarapu
  */
-public class TurkeytoDuckAdapter implements Duck {
+public class TurkeytoIDuckAdapter implements IDuck {
 
-    private Turkey turkey;
+    private ITurkey turkey;
 
-    public TurkeytoDuckAdapter(Turkey turkey) {
+    public TurkeytoIDuckAdapter(ITurkey turkey) {
         this.turkey = turkey;
     }
 

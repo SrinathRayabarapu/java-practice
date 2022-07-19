@@ -9,7 +9,7 @@ import java.util.List;
  *
  * @author Srinath.Rayabarapu
  */
-public class StrategyPatternEx1Main {
+public class StrategyPatternMain {
 
     public static void main(String[] args) {
 
@@ -38,8 +38,6 @@ public class StrategyPatternEx1Main {
 }
 
 /**
- *
- *
  * @author Srinath.Rayabarapu
  */
 class Customer {
