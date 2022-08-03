@@ -11,7 +11,6 @@ import lombok.extern.slf4j.Slf4j;
  *
  * @author Srinath.Rayabarapu
  */
-
 @Slf4j
 public class ComparableMain {
 

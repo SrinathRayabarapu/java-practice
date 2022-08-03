@@ -71,7 +71,7 @@ public class FindMergePointOfLinkedListsMain {
             shorter = m1;
         }
 
-        // advancing the longer linked list
+        // advancing the longer linked list to the shorter
         while (difference > 0) {
             longer = longer.getNext();
             difference--;

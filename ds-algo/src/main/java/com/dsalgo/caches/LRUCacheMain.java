@@ -1,10 +1,10 @@
 package com.dsalgo.caches;
 
 import com.dsalgo.linkedlist.DoublyNode;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.Deque;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
 
@@ -21,6 +21,7 @@ import java.util.Map;
  *
  * @author Srinath.Rayabarapu
  */
+@Slf4j
 public class LRUCacheMain {
 
     public static void main(String[] args) {
@@ -30,40 +31,48 @@ public class LRUCacheMain {
 
         cache.set(1, 10);
         cache.set(2, 20);
-        // returns 10
-        System.out.println("Value for the key: 1 is " + cache.get(1));
+
+        log.info("Value for the key: 1 is {}", cache.get(1));
 
         // evicts key 2 and store a key (3) with
-        // value 30 in the cache.
         cache.set(3, 30);
-        System.out.println("Value for the key: 2 is " + cache.get(2)); // returns -1 (not found)
+
+        log.info("Value for the key: 2 is {}", cache.get(2)); // returns -1 (not found)
+
         // evicts key 1 and store a key (4) with
-        // value 40 in the cache.
         cache.set(4, 40);
-        System.out.println("Value for the key: 1 is " + cache.get(1)); // returns -1 (not found)
-        System.out.println("Value for the key: 3 is " + cache.get(3)); // returns 30
-        System.out.println("Value for the key: 4 is " + cache.get(4)); // return 40
+
+        log.info("Value for the key: 1 is {}", cache.get(1)); // returns -1 (not found)
+        log.info("Value for the key: 3 is {}", cache.get(3)); // returns 30
+        log.info("Value for the key: 4 is {}", cache.get(4)); // return 40
 
 
-        System.out.println("-----------------------");
+        log.info("-----------------------");
 
 
-        // 2. simple LRU implementation with size restrictions
+/*        // 2. simple LRU implementation with size restrictions
         LRUWithDeque lru = new LRUWithDeque(4);
+
         lru.add(1);
         lru.add(2);
         lru.add(3);
         lru.add(1);
         lru.add(4);
         lru.add(5);
-        lru.display();
+        lru.add(5);
+
+        // 2 is removed
+        lru.display();*/
+
     }
+
 }
 
+@Slf4j
 class LRUCache {
 
     private DoublyNode head, tail;
-    private int capacity, count;
+    private int capacity;
     private Map<Integer, DoublyNode> map;
 
     public LRUCache(int capacity) {
@@ -82,10 +91,9 @@ class LRUCache {
             DoublyNode node = map.get(key);
             deleteNode(node);
             addToHead(node);
-            System.out.printf("Found value %d for the key %d%n", node.value, key);
             return node.value;
         }
-        System.out.printf("Didn't find any value for the key %d%n", key);
+        log.error("Didn't find any value for the key {}", key);
         // in case no key found in cache
         return -1;
     }
@@ -125,6 +133,7 @@ class LRUCache {
 /**
  * LRU implementation class
  */
+@Slf4j
 class LRUWithDeque {
 
     Deque<Integer> queue;
@@ -136,22 +145,19 @@ class LRUWithDeque {
     }
 
     void add(Integer ele) {
-        if (!queue.contains(ele)) {
-            //add it
+        if (queue.contains(ele)) {
+            queue.remove(ele);
+        } else {
             if (queue.size() == capacity) {
                 queue.removeLast();
             }
-        } else {
-            // check lru logic
-            queue.remove(ele);
         }
         queue.push(ele);
     }
 
     void display() {
-        Iterator<Integer> iterator = queue.iterator();
-        while (iterator.hasNext()) {
-            System.out.print(iterator.next() + " ");
+        for (Integer integer : queue) {
+            log.info(integer + " ");
         }
     }
 

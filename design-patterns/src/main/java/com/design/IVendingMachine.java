@@ -1,4 +1,4 @@
-package com.design.vendingmachine;
+package com.design;
 
 /**
  * TODO: complete this

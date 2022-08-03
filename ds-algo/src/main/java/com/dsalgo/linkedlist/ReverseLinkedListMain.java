@@ -60,7 +60,7 @@ public class ReverseLinkedListMain {
             return;
         }
         printListInReverseRecursive(head.getNext());
-        System.out.println(head);
+        log.info(head+"");
     }
 
     private static Node reverseLinkedListIterative(Node head) {
