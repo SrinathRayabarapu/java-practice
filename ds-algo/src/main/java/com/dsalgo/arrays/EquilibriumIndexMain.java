@@ -1,23 +1,27 @@
 package com.dsalgo.arrays;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.Arrays;
 
 /**
- * An array of n integers is given in which we should select an equilibrium number. The equilibrium number
- * is the number for which the sum of numbers left to the equilibrium number in the array is equal to the
- * sum of elements to the right. If equilibrium number does not exist print -1
+ * Given an array of n integers find an equilibrium number.
+ * The equilibrium index of an array is an index such that the sum of elements at lower indexes is equal to the sum of
+ * elements at higher indexes.
+ * If equilibrium number does not exist print -1
  * <p>
  * https://leetcode.com/problems/find-pivot-index/
  */
-public class EquilibriumNumberMain {
+@Slf4j
+public class EquilibriumIndexMain {
 
     public static void main(String[] args) {
 
         int[] inputArray = {1, 7, 3, 6, 5, 6};
 
-        int n = findEquilibriumNumber(inputArray);
-        System.out.println(n);
+        int index = findEquilibriumNumber(inputArray);
 
+        log.info("Equilibrium Index is : {} and Number is : {}", index, inputArray[index]);
     }
 
     /**
@@ -40,7 +44,7 @@ public class EquilibriumNumberMain {
 
         for (int i = 0; i < inputArray.length; i++) {
             if (leftSum == sum - leftSum - inputArray[i]) {
-                return inputArray[i];
+                return i;
             }
             leftSum += inputArray[i];
         }
