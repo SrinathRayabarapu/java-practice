@@ -24,7 +24,7 @@ public class PrefixOddSumMain {
      * @param inputArray
      * @return
      */
-    private static int[] buildPrefixOddSumArray(int[] inputArray) {
+    public static int[] buildPrefixOddSumArray(int[] inputArray) {
 
         int oddSum = 0;
 

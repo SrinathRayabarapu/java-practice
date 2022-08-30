@@ -27,7 +27,7 @@ public class PrefixEvenSumMain {
      * @param inputArray
      * @return
      */
-    private static int[] buildPrefixEvenSumArray(int[] inputArray) {
+    public static int[] buildPrefixEvenSumArray(int[] inputArray) {
 
         int evenSum = 0;
 
