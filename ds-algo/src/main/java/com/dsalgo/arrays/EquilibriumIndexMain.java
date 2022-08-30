@@ -19,7 +19,7 @@ public class EquilibriumIndexMain {
 
         int[] inputArray = {1, 7, 3, 6, 5, 6};
 
-        int index = findEquilibriumNumber(inputArray);
+        int index = findEquilibriumIndex(inputArray);
 
         log.info("Equilibrium Index is : {} and Number is : {}", index, inputArray[index]);
     }
@@ -36,14 +36,14 @@ public class EquilibriumIndexMain {
      * @param inputArray
      * @return
      */
-    private static int findEquilibriumNumber(int[] inputArray) {
+    private static int findEquilibriumIndex(int[] inputArray) {
 
         int sum = Arrays.stream(inputArray).sum();
 
         int leftSum = 0;
 
         for (int i = 0; i < inputArray.length; i++) {
-            if (leftSum == sum - leftSum - inputArray[i]) {
+            if (leftSum == (sum-leftSum)-inputArray[i]) {
                 return i;
             }
             leftSum += inputArray[i];
