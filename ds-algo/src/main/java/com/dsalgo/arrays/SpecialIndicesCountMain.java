@@ -14,8 +14,8 @@ public class SpecialIndicesCountMain {
 
     public static void main(String[] args) {
 
-//        int[] inputArray = {2, 1, 6, 4};
-        int[] inputArray = {1, 1, 1};
+//        int[] inputArray = {2, 1, 6, 4}; // answer : 1
+        int[] inputArray = {1, 1, 1}; // answer : 3
 
         int count = countOfSpecialIndices(inputArray);
 
