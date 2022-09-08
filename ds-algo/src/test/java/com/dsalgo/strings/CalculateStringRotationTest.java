@@ -10,4 +10,5 @@ class CalculateStringRotationTest {
     void calculateStringRotations() {
         assertTrue(true);
     }
+
 }
