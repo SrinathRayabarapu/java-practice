@@ -10,6 +10,10 @@ import lombok.extern.slf4j.Slf4j;
 import java.io.IOException;
 import java.nio.file.Paths;
 
+/**
+ * zxing library is used to generate matrix QR code - for any alphanumeric text
+ * barbecue library is used to generate linear QR code - mainly for digits
+ */
 @Slf4j
 public class GenerateQRCodeMain {
 
