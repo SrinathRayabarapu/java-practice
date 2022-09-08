@@ -7,4 +7,5 @@ include 'design-patterns'
 include 'ds-algo'
 include 'util'
 include 'resilience4j'
+include 'proj_generating-qr-code'
 
