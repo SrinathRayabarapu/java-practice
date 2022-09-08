@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class PaginationHelperTest {
     @Test
     void testSomething() {
-        PaginationHelper<Character> helper = new PaginationHelper(Arrays.asList('a', 'b', 'c', 'd', 'e', 'f'), 4);
+        PaginationHelper<Character> helper = new PaginationHelper<>(Arrays.asList('a', 'b', 'c', 'd', 'e', 'f'), 4);
         assertEquals(2, helper.pageCount()); //should == 2
         assertEquals(6, helper.itemCount()); //should == 6
         assertEquals(4, helper.pageItemCount(0)); //should == 4
