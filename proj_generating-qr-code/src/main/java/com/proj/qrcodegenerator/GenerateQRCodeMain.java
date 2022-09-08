@@ -22,8 +22,6 @@ public class GenerateQRCodeMain {
         String qrCodeToBeGeneratedURL = "https://www.youtube.com/watch?v=9j-i-o7vx1c&ab_channel=TechStack9";
         log.info("Generating QR Code for : {}", qrCodeToBeGeneratedURL);
 
-        String charset = "UTF-8";
-
         // get the current project path
         String pathToSaveQRCodes = System.getProperty("user.dir") + "/proj_generating-qr-code/src/main/resources/qrcodes/TechStack9.png";
 
