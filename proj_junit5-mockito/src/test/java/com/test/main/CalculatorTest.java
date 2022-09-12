@@ -3,11 +3,13 @@ package com.test.main;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.CsvFileSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @DisplayName("Test Math operations in Calculator class")
 class CalculatorTest {
@@ -22,6 +24,12 @@ class CalculatorTest {
     @AfterAll
     static void afterAll() {
         System.out.println("@AfterAll method called");
+    }
+
+    static Stream<Arguments> parameterisedMethod() {
+        return Stream.of(Arguments.of(5, 3, 2),
+                Arguments.of(5, 0, 5),
+                Arguments.of(-5, 3, -8));
     }
 
     @BeforeEach
@@ -64,17 +72,25 @@ class CalculatorTest {
     }
 
     @ParameterizedTest
-    @MethodSource("parameterisedMethod")
+//    @MethodSource("parameterisedMethod")
+//    @CsvSource({"-5, 3, -8"})
+    @CsvFileSource(resources = "/csvFileSource.csv")
     void testParameterisedMethod_WhenAListOfArgumentsProvided_ShouldExecuteAllOfTheParams(int minuend, int subtrahend,
                                                                                           int expectedResult) {
         int actualValue = calculator.integerSubtraction(minuend, subtrahend);
         assertEquals(expectedResult, actualValue);
     }
 
-    static Stream<Arguments> parameterisedMethod() {
-        return Stream.of(Arguments.of(5, 3, 2),
-                Arguments.of(5, 0, 5),
-                Arguments.of(-5, 3, -8));
+    @ParameterizedTest
+    @ValueSource(strings = {"srinath", "hitharsh", "viyansh"})
+    void valueSourceExample(String someText) {
+        System.out.println(someText);
+        assertNotNull(someText);
+    }
+
+    @RepeatedTest(3)
+    void repeatedTest(RepetitionInfo repetitionInfo, TestInfo testInfo) {
+        System.out.println("This " + testInfo.getTestMethod().get().getName() + " is repeating for : " + repetitionInfo.getCurrentRepetition());
     }
 
 }
