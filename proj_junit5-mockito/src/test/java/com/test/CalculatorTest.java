@@ -59,11 +59,12 @@ class CalculatorTest {
         Assertions.assertEquals(expectedResult, actualResult, "The value didn't match!");
     }
 
-    @Disabled("TODO: need to fix the exception!")
+//    @Disabled("Way to disable a test!")
     @DisplayName("Divisible by Zero")
     @Test
     void testIntegerDivision_WhenFourIsDividedByZero_ShouldThrowArithmeticException() {
-        Assertions.assertThrowsExactly(ArithmeticException.class, () -> calculator.integerDivision(4, 0));
+        ArithmeticException exception = Assertions.assertThrows(ArithmeticException.class, () -> calculator.integerDivision(4, 0));
+        assertEquals("Divisor is Zero", exception.getMessage());
     }
 
     @Test

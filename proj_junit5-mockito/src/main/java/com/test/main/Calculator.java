@@ -4,6 +4,9 @@ package com.test.main;
 public class Calculator {
 
     public int integerDivision(int dividend, int divisor) {
+        if(divisor == 0){
+            throw new ArithmeticException("Divisor is Zero");
+        }
         return dividend / divisor;
     }
 
