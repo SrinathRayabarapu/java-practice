@@ -1,10 +1,13 @@
 package com.core.java8.lambda;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * passing code implementation as parameter is crux of Functional Interface
  *
  * @author Srinath.Rayabarapu
  */
+@Slf4j
 public class FunctionalInterfaceMain {
 	
 	public static void main(String[] args) {
@@ -13,13 +16,13 @@ public class FunctionalInterfaceMain {
 		carryOutWork(new SimpleFunctionalInterface() {
 			@Override
 			public void doWork() {
-				System.out.println("Works in traditional way too!");
+				log.info("Works in traditional way too!");
 			}
 		});
 		
 		//lambda way of working
 		// doWork method doesn't take a params
-		SimpleFunctionalInterface sf1 = () -> System.out.println("Works in Lambda!");
+		SimpleFunctionalInterface sf1 = () -> log.info("Works in Lambda!");
 		sf1.doWork();
 		sf1.defaultMethod();
 
