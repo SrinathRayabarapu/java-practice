@@ -3,7 +3,7 @@ package com.dsalgo.arrays;
 import java.util.Arrays;
 
 /**
- * given an array of numbers, find second largest element
+ * given an array of numbers, find second-largest element
  *
  * @author Srinath Rayabarapu
  */
