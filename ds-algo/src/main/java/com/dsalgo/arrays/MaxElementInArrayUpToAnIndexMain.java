@@ -11,7 +11,6 @@ public class MaxElementInArrayUpToAnIndexMain {
     public static void main(String[] args) {
 
         int[] input = {-3, 6, 2, 4, 5, 2, 8, -9, 3, 1};
-
         int i = 5;
 
         int max = findMaxTillIndex(input, i);
