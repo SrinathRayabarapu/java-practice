@@ -11,8 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 public class ContiguousSubArrayLargeSumMain {
 
     public static void main(String[] args) {
-
-        int[] inputArray = {1, -2, 3, 4, -10};
+        int[] inputArray = {-1, 2, 3, 4, -10};
 
         int largeSum = findLargestSubArray(inputArray);
 

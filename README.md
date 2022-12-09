@@ -17,6 +17,7 @@
 > Spring Cloud
 > PCI fundamentals
 > Docker Vs Kubernetes
+> Create self signed certificate and apply it in server
 
 ```
 
@@ -24,7 +25,7 @@
 
 **Need to check below:**
 ```
-What's been implemented:
+What's implemented:
 Data Structures
 AVL Tree
 B-Tree
