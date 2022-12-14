@@ -2,15 +2,11 @@ package com.reactor.services;
 
 import org.junit.jupiter.api.Test;
 import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
-
-import java.util.List;
 
 class FluxServicesTest {
 
     FluxServices fluxServices = new FluxServices();
-    MonoServices monoServices = new MonoServices();
 
     @Test
     void fruitsFlux() {
@@ -22,12 +18,6 @@ class FluxServicesTest {
     void fruitsFluxMap() {
         Flux<String> stringFlux = fluxServices.fruitsFluxMap();
         StepVerifier.create(stringFlux).expectNext("BANANA", "ORANGE", "APPLE", "CHIKOO", "MANGO").verifyComplete();
-    }
-
-    @Test
-    void mangoMono() {
-        Mono<String> stringMono = monoServices.mangoMono();
-        StepVerifier.create(stringMono).expectNext("Mango").verifyComplete();
     }
 
     @Test
@@ -49,15 +39,6 @@ class FluxServicesTest {
     }
 
     @Test
-    void mangoMonoFlatMap() {
-        Mono<List<String>> listMono = monoServices.mangoMonoFlatMap();
-        StepVerifier.create(listMono)
-                .expectNext(List.of("M", "a", "n", "g", "o"))
-//                .expectNextCount(1)
-                .verifyComplete();
-    }
-
-    @Test
     void fruitsFluxConcatMapAsync() {
         Flux<String> stringFlux = fluxServices.fruitsFluxConcatMapAsync();
         StepVerifier.create(stringFlux)
@@ -66,14 +47,7 @@ class FluxServicesTest {
                 .verifyComplete();
     }
 
-    @Test
-    void mangoMonoFlatMapToMany() {
-        Flux<String> stringFlux = monoServices.mangoMonoFlatMapToMany();
-        StepVerifier.create(stringFlux)
-//                .expectNext("B", "a", "n", "a", "n", "a", "O", "r", "a", "n", "g", "e")
-                .expectNextCount(5)
-                .verifyComplete();
-    }
+
 
     @Test
     void fruitsFluxTransform() {
@@ -101,5 +75,44 @@ class FluxServicesTest {
     }
 
 
+    @Test
+    void fruitsVeggiesFluxConcat() {
+        Flux<String> fruitsVeggiesFlux = fluxServices.fruitsVeggiesFluxConcat();
+        StepVerifier.create(fruitsVeggiesFlux)
+                .expectNext("Mango", "Banana", "Tomato", "Cucumber")
+                .verifyComplete();
+    }
 
+    @Test
+    void fruitsVeggiesFluxMerge() {
+        Flux<String> fruitsVeggiesFlux = fluxServices.fruitsVeggiesFluxMerge();
+        StepVerifier.create(fruitsVeggiesFlux)
+                .expectNext("Mango", "Tomato", "Banana", "Cucumber")
+//                .expectNextCount(4)
+                .verifyComplete();
+    }
+
+    @Test
+    void fruitsVeggiesFluxMergeSequential() {
+        Flux<String> fruitsVeggiesFlux = fluxServices.fruitsVeggiesFluxMergeSequential();
+        StepVerifier.create(fruitsVeggiesFlux)
+                .expectNext("Mango", "Banana", "Tomato", "Cucumber")
+                .verifyComplete();
+    }
+
+    @Test
+    void fruitsVeggiesZip() {
+        Flux<String> fruitsVeggiesFlux = fluxServices.fruitsVeggiesZip();
+        StepVerifier.create(fruitsVeggiesFlux)
+                .expectNext("MangoTomato", "BananaCucumber")
+                .verifyComplete();
+    }
+
+    @Test
+    void fruitsVeggiesZipTuple() {
+        Flux<String> fruitsVeggiesFlux = fluxServices.fruitsVeggiesZipTuple();
+        StepVerifier.create(fruitsVeggiesFlux)
+                .expectNext("MangoTomatoPotato", "BananaCucumberBeans")
+                .verifyComplete();
+    }
 }

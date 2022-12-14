@@ -23,4 +23,12 @@ public class MonoServices {
                 .log();
     }
 
+    public Mono<String> fruitsVeggiesZipTuple() {
+        Mono<String> fruits = Mono.just("Mango");
+        Mono<String> veggies = Mono.just("Tomato");
+        Mono<String> moreVeggies = Mono.just("Potato");
+        return Mono.zip(fruits, veggies, moreVeggies)
+                .map(objects -> objects.getT1() + objects.getT2() + objects.getT3()).log();
+    }
+
 }

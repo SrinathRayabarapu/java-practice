@@ -60,4 +60,41 @@ public class FluxServices {
                 .log();
     }
 
+    public Flux<String> fruitsVeggiesFluxConcat() {
+        Flux<String> fruits = Flux.just("Mango", "Banana");
+        Flux<String> veggies = Flux.just("Tomato", "Cucumber");
+        return Flux.concat(fruits, veggies).log(); //order is guaranteed
+    }
+
+    public Flux<String> fruitsVeggiesFluxMerge() {
+        Flux<String> fruits = Flux.just("Mango", "Banana")
+                .delayElements(Duration.ofMillis(100));
+        Flux<String> veggies = Flux.just("Tomato", "Cucumber")
+                .delayElements(Duration.ofMillis(200));
+        return Flux.merge(fruits, veggies).log(); //data is interleaved(async in nature)
+    }
+
+    public Flux<String> fruitsVeggiesFluxMergeSequential() {
+        Flux<String> fruits = Flux.just("Mango", "Banana")
+                .delayElements(Duration.ofMillis(100));
+        Flux<String> veggies = Flux.just("Tomato", "Cucumber")
+                .delayElements(Duration.ofMillis(200));
+        return Flux.mergeSequential(fruits, veggies).log(); //data is interleaved(async in nature)
+    }
+
+    public Flux<String> fruitsVeggiesZip() {
+        Flux<String> fruits = Flux.just("Mango", "Banana");
+        Flux<String> veggies = Flux.just("Tomato", "Cucumber");
+        return Flux.zip(fruits, veggies, (first, second) -> first+second).log();
+    }
+
+    public Flux<String> fruitsVeggiesZipTuple() {
+        Flux<String> fruits = Flux.just("Mango", "Banana");
+        Flux<String> veggies = Flux.just("Tomato", "Cucumber");
+        Flux<String> moreVeggies = Flux.just("Potato", "Beans");
+        return Flux.zip(fruits, veggies, moreVeggies)
+                .map(objects -> objects.getT1() + objects.getT2() + objects.getT3()
+        ).log();
+    }
+
 }
