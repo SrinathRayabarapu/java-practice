@@ -7,31 +7,32 @@ import reactor.test.StepVerifier;
 
 import java.util.List;
 
-class FluxAndMonoServicesTest {
+class FluxServicesTest {
 
-    FluxAndMonoServices fluxAndMonoServices = new FluxAndMonoServices();
+    FluxServices fluxServices = new FluxServices();
+    MonoServices monoServices = new MonoServices();
 
     @Test
     void fruitsFlux() {
-        Flux<String> stringFlux = fluxAndMonoServices.fruitsFlux();
+        Flux<String> stringFlux = fluxServices.fruitsFlux();
         StepVerifier.create(stringFlux).expectNext("Banana", "Orange", "Apple", "Chikoo", "Mango").verifyComplete();
     }
 
     @Test
     void fruitsFluxMap() {
-        Flux<String> stringFlux = fluxAndMonoServices.fruitsFluxMap();
+        Flux<String> stringFlux = fluxServices.fruitsFluxMap();
         StepVerifier.create(stringFlux).expectNext("BANANA", "ORANGE", "APPLE", "CHIKOO", "MANGO").verifyComplete();
     }
 
     @Test
     void mangoMono() {
-        Mono<String> stringMono = fluxAndMonoServices.mangoMono();
+        Mono<String> stringMono = monoServices.mangoMono();
         StepVerifier.create(stringMono).expectNext("Mango").verifyComplete();
     }
 
     @Test
     void fruitsFluxFlatMap() {
-        Flux<String> stringFlux = fluxAndMonoServices.fruitsFluxFlatMap();
+        Flux<String> stringFlux = fluxServices.fruitsFluxFlatMap();
         StepVerifier.create(stringFlux)
 //                .expectNext("B", "a", "n", "a", "n", "a", "O", "r", "a", "n", "g", "e")
                 .expectNextCount(12)
@@ -40,7 +41,7 @@ class FluxAndMonoServicesTest {
 
     @Test
     void fruitsFluxFlatMapAsync() {
-        Flux<String> stringFlux = fluxAndMonoServices.fruitsFluxFlatMapAsync();
+        Flux<String> stringFlux = fluxServices.fruitsFluxFlatMapAsync();
         StepVerifier.create(stringFlux)
 //                .expectNext("B", "a", "n", "a", "n", "a", "O", "r", "a", "n", "g", "e")
                 .expectNextCount(12)
@@ -49,7 +50,7 @@ class FluxAndMonoServicesTest {
 
     @Test
     void mangoMonoFlatMap() {
-        Mono<List<String>> listMono = fluxAndMonoServices.mangoMonoFlatMap();
+        Mono<List<String>> listMono = monoServices.mangoMonoFlatMap();
         StepVerifier.create(listMono)
                 .expectNext(List.of("M", "a", "n", "g", "o"))
 //                .expectNextCount(1)
@@ -58,7 +59,7 @@ class FluxAndMonoServicesTest {
 
     @Test
     void fruitsFluxConcatMapAsync() {
-        Flux<String> stringFlux = fluxAndMonoServices.fruitsFluxConcatMapAsync();
+        Flux<String> stringFlux = fluxServices.fruitsFluxConcatMapAsync();
         StepVerifier.create(stringFlux)
 //                .expectNext("B", "a", "n", "a", "n", "a", "O", "r", "a", "n", "g", "e")
                 .expectNextCount(12)
@@ -67,7 +68,7 @@ class FluxAndMonoServicesTest {
 
     @Test
     void mangoMonoFlatMapToMany() {
-        Flux<String> stringFlux = fluxAndMonoServices.mangoMonoFlatMapToMany();
+        Flux<String> stringFlux = monoServices.mangoMonoFlatMapToMany();
         StepVerifier.create(stringFlux)
 //                .expectNext("B", "a", "n", "a", "n", "a", "O", "r", "a", "n", "g", "e")
                 .expectNextCount(5)
@@ -76,7 +77,7 @@ class FluxAndMonoServicesTest {
 
     @Test
     void fruitsFluxTransform() {
-        Flux<String> stringFlux = fluxAndMonoServices.fruitsFluxTransform(5);
+        Flux<String> stringFlux = fluxServices.fruitsFluxTransform(5);
         StepVerifier.create(stringFlux)
 //                .expectNext("B", "a", "n", "a", "n", "a", "O", "r", "a", "n", "g", "e")
                 .expectNextCount(3)
@@ -85,7 +86,7 @@ class FluxAndMonoServicesTest {
 
     @Test
     void fruitsFluxTransformDefaultIfEmpty() {
-        Flux<String> stringFlux = fluxAndMonoServices.fruitsFluxTransformDefaultIfEmpty(15);
+        Flux<String> stringFlux = fluxServices.fruitsFluxTransformDefaultIfEmpty(15);
         StepVerifier.create(stringFlux)
                 .expectNext("Default Fruit!")
                 .verifyComplete();
@@ -93,9 +94,12 @@ class FluxAndMonoServicesTest {
 
     @Test
     void fruitsFluxTransformSwitchIfEmpty() {
-        Flux<String> stringFlux = fluxAndMonoServices.fruitsFluxTransformSwitchIfEmpty(15);
+        Flux<String> stringFlux = fluxServices.fruitsFluxTransformSwitchIfEmpty(15);
         StepVerifier.create(stringFlux)
                 .expectNext("random fruit1", "random fruit2")
                 .verifyComplete();
     }
+
+
+
 }

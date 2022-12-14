@@ -1,14 +1,13 @@
 package com.reactor.services;
 
 import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 
 import java.time.Duration;
 import java.util.List;
 import java.util.Random;
 import java.util.function.Function;
 
-public class FluxAndMonoServices {
+public class FluxServices {
 
     public Flux<String> fruitsFlux() {
         return Flux.fromIterable(List.of("Banana", "Orange", "Apple", "Chikoo", "Mango")).log();
@@ -58,22 +57,6 @@ public class FluxAndMonoServices {
         return Flux.fromIterable(List.of("Banana", "Orange", "Apple", "Chikoo", "Mango"))
                 .transform(filterData)
                 .switchIfEmpty(Flux.just("random fruit1", "random fruit2")) // further transform can also be used
-                .log();
-    }
-
-    public Mono<String> mangoMono() {
-        return Mono.just("Mango").log();
-    }
-
-    public Mono<List<String>> mangoMonoFlatMap() {
-        return Mono.just("Mango")
-                .flatMap(s -> Mono.just(List.of(s.split(""))))
-                .log();
-    }
-
-    public Flux<String> mangoMonoFlatMapToMany() {
-        return Mono.just("Mango")
-                .flatMapMany(s -> Flux.just(s.split("")))
                 .log();
     }
 

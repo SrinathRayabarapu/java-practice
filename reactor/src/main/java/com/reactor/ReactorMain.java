@@ -1,6 +1,6 @@
 package com.reactor;
 
-import com.reactor.services.FluxAndMonoServices;
+import com.reactor.services.FluxServices;
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
 
@@ -8,14 +8,14 @@ import reactor.core.publisher.Flux;
 public class ReactorMain {
     public static void main(String[] args) {
 
-        FluxAndMonoServices fluxAndMonoServices = new FluxAndMonoServices();
+        FluxServices fluxServices = new FluxServices();
 
         log.info("From Flux");
-        Flux<String> stringFlux = fluxAndMonoServices.fruitsFlux();
+        Flux<String> stringFlux = fluxServices.fruitsFlux();
         stringFlux.subscribe(fruit -> log.info(fruit));
 
         log.info("From Mono");
-        fluxAndMonoServices.mangoMono().subscribe(fruit -> log.info(fruit));
+        fluxServices.mangoMono().subscribe(fruit -> log.info(fruit));
 
     }
 
