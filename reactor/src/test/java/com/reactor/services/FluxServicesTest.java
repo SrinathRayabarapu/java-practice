@@ -47,8 +47,6 @@ class FluxServicesTest {
                 .verifyComplete();
     }
 
-
-
     @Test
     void fruitsFluxTransform() {
         Flux<String> stringFlux = fluxServices.fruitsFluxTransform(5);
@@ -73,7 +71,6 @@ class FluxServicesTest {
                 .expectNext("random fruit1", "random fruit2")
                 .verifyComplete();
     }
-
 
     @Test
     void fruitsVeggiesFluxConcat() {
@@ -115,4 +112,5 @@ class FluxServicesTest {
                 .expectNext("MangoTomatoPotato", "BananaCucumberBeans")
                 .verifyComplete();
     }
+
 }
