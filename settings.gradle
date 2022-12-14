@@ -9,4 +9,5 @@ include 'util'
 include 'resilience4j'
 include 'proj_generating-qr-code'
 include 'proj_junit5-mockito'
+include 'reactor'
 
