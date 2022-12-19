@@ -1,8 +1,10 @@
 package com.reactor.services;
 
+import com.reactor.services.exceptions.MyCustomBusinessException;
 import org.junit.jupiter.api.Test;
 import reactor.core.publisher.Flux;
 import reactor.test.StepVerifier;
+import reactor.tools.agent.ReactorDebugAgent;
 
 class FluxServicesTest {
 
@@ -111,6 +113,42 @@ class FluxServicesTest {
         StepVerifier.create(fruitsVeggiesFlux)
                 .expectNext("MangoTomatoPotato", "BananaCucumberBeans")
                 .verifyComplete();
+    }
+
+    @Test
+    void fruitsFluxDoOn() {
+        Flux<String> fruitsFluxDoOn = fluxServices.fruitsFluxDoOn();
+        StepVerifier.create(fruitsFluxDoOn)
+                .expectNext("Banana", "Orange", "Apple", "Chikoo", "Mango")
+                .verifyComplete();
+    }
+
+    @Test
+    void fruitsFluxOnErrorReturn() {
+        Flux<String> fruitsFluxOnErrorReturn = fluxServices.fruitsFluxOnErrorReturn().log();
+        StepVerifier.create(fruitsFluxOnErrorReturn)
+                .expectNext("Banana", "Orange", "Apple", "Chikoo", "Mango", "New Fruit!")
+                .verifyComplete();
+    }
+
+    @Test
+    void fruitsFluxOnErrorContinue() {
+        Flux<String> fruitsFluxOnErrorReturn = fluxServices.fruitsFluxOnErrorContinue().log();
+        StepVerifier.create(fruitsFluxOnErrorReturn)
+                .expectNext("BANANA", "ORANGE", "CHIKOO", "MANGO")
+                .verifyComplete();
+    }
+
+    @Test
+    void fruitsFluxOnErrorMap() {
+        ReactorDebugAgent.init();
+        ReactorDebugAgent.processExistingClasses();
+
+        Flux<String> fruitsFluxOnErrorReturn = fluxServices.fruitsFluxOnErrorMap().log();
+        StepVerifier.create(fruitsFluxOnErrorReturn)
+                .expectNext("BANANA", "ORANGE")
+                .expectError(MyCustomBusinessException.class)
+                .verify();
     }
 
 }

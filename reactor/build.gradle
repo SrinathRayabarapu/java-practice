@@ -13,6 +13,7 @@ dependencies {
 
     // project reactor
     implementation "io.projectreactor:reactor-core:$reactorVersion"
+    implementation "io.projectreactor:reactor-tools:$reactorVersion"
 
     //lombok
     compileOnly "org.projectlombok:lombok:$lombokVersion"
