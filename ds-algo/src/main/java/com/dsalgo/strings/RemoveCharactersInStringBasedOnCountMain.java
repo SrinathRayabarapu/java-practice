@@ -3,7 +3,7 @@ package com.dsalgo.strings;
 /**
  * TODO -
  *
- * #OptumLabs
+ * #OptumLabs - Hoppesch, Joseph M
  */
 public class RemoveCharactersInStringBasedOnCountMain {
 
@@ -14,6 +14,7 @@ public class RemoveCharactersInStringBasedOnCountMain {
 
     // do it in 4 iterations
 
+    // "aabbaa", 1 => "aba"
     public static void main(String[] args) {
 
         String input = "aabbaa";

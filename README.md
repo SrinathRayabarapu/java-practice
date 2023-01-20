@@ -14,10 +14,9 @@
 > DockerSwarm
 > GraphQL
 > SAGA implementations
-> Spring Cloud
 > PCI fundamentals
 > Docker Vs Kubernetes
-> Create self signed certificate and apply it in server
+> Create self signed certificate and apply it on server
 
 ```
 
