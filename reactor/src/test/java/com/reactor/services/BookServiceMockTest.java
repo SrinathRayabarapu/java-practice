@@ -24,11 +24,9 @@ public class BookServiceMockTest {
     @Test
     void getBooksMock() {
 
-        Mockito.when(bookInfoService.getBooksInfo())
-                .thenCallRealMethod();
+        Mockito.when(bookInfoService.getBooksInfo()).thenCallRealMethod();
 
-        Mockito.when(reviewService.getReviews(Mockito.anyLong()))
-                .thenCallRealMethod();
+        Mockito.when(reviewService.getReviews(Mockito.anyLong())).thenCallRealMethod();
 
         var books = bookService.getBooks();
 
@@ -40,11 +38,10 @@ public class BookServiceMockTest {
     @Test
     void getBooksMockOnError() {
 
-        Mockito.when(bookInfoService.getBooksInfo())
-                .thenCallRealMethod();
+        Mockito.when(bookInfoService.getBooksInfo()).thenCallRealMethod();
 
         Mockito.when(reviewService.getReviews(Mockito.anyLong()))
-                .thenThrow(new IllegalStateException("exception using test"));
+                .thenThrow(new IllegalStateException("Exception using Test"));
 
         var books = bookService.getBooks();
 
@@ -56,11 +53,10 @@ public class BookServiceMockTest {
     @Test
     void getBooksMockOnErrorRetry() {
 
-        Mockito.when(bookInfoService.getBooksInfo())
-                .thenCallRealMethod();
+        Mockito.when(bookInfoService.getBooksInfo()).thenCallRealMethod();
 
         Mockito.when(reviewService.getReviews(Mockito.anyLong()))
-                .thenThrow(new IllegalStateException("exception using test"));
+                .thenThrow(new IllegalStateException("Exception using Test"));
 
         var books = bookService.getBooksRetry();
 
@@ -72,11 +68,10 @@ public class BookServiceMockTest {
     @Test
     void getBooksMockOnErrorRetryWhen() {
 
-        Mockito.when(bookInfoService.getBooksInfo())
-                .thenCallRealMethod();
+        Mockito.when(bookInfoService.getBooksInfo()).thenCallRealMethod();
 
         Mockito.when(reviewService.getReviews(Mockito.anyLong()))
-                .thenThrow(new IllegalStateException("exception using test"));
+                .thenThrow(new IllegalStateException("Exception using Test"));
 
         var books = bookService.getBooksRetryWhen();
 

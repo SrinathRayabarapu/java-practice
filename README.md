@@ -7,15 +7,7 @@
 **TODO : Learn**
 ```
 > TDD and Mockito/JUnit 5
-> Docker and Kubernetes Scaling up and down
-> gRPC practice
-> RxJava2
 > Micronaut
-> DockerSwarm
-> GraphQL
-> SAGA implementations
-> PCI fundamentals
-> Docker Vs Kubernetes
 > Create self signed certificate and apply it on server
 
 ```
