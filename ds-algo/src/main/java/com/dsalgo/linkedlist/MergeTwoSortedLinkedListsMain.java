@@ -64,6 +64,13 @@ public class MergeTwoSortedLinkedListsMain {
 
     }
 
+    /**
+     * TC: O(n + k) where n and k are lengths of respective linked lists
+     * SC: O(1)
+     * @param n1
+     * @param p1
+     * @return
+     */
     private static Node mergeTwoLinkedListsRecursive(Node n1, Node p1) {
 
         if(n1 == null)
