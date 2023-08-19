@@ -8,7 +8,7 @@ package com.dsalgo.linkedlist;
  *
  * 1 -> 4 -> 3 -> 2 -> 5 -> null
  */
-public class MNLinkedListReversalsMain {
+public class ReverseLinkedListNodesFromMtoN {
 
     public static void main(String[] args) {
 

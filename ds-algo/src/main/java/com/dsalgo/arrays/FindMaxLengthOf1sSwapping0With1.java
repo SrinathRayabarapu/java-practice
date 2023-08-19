@@ -3,6 +3,7 @@ package com.dsalgo.arrays;
 public class FindMaxLengthOf1sSwapping0With1 {
 
     public static void main(String[] args) {
+
         // usecase 1 : where you have extra 1's available in isolation. No. of 1's are NOT same as array length-1
         int[] inputArray1 = {1, 1, 0, 1, 0, 1, 0, 1, 1};
         // in this case the solution is same as FindMaxLengthOf1sReplacing0With1 if you think about it
@@ -10,7 +11,6 @@ public class FindMaxLengthOf1sSwapping0With1 {
         // usecase 2 : where you don't have extra 1's available. No. of 1's are same as array length-1
         int[] inputArray2 = {1, 1, 1, 1, 0, 1, 1, 1, 1};
         // in this case it will be different, just ls+rs
-
 
         // step 1: find no. of 1's
         int oc = 0;
