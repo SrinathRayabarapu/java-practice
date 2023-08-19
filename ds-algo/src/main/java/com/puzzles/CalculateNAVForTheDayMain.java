@@ -1,6 +1,9 @@
 package com.puzzles;
 
 import com.google.gson.Gson;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.BufferedReader;
@@ -14,8 +17,9 @@ import java.util.stream.Stream;
 
 /**
  * Other implementation at https://github.com/excellencia/problemSolving/blob/056805df3e21015e9bce6e82984a7a8384f06595/Result.java
+ *
+ * #Arcesium
  */
-//Arcesium
 @Slf4j
 public class CalculateNAVForTheDayMain {
 
@@ -86,88 +90,30 @@ public class CalculateNAVForTheDayMain {
 
             return stringBuilder.toString();
         } catch (Exception e){
-            e.printStackTrace();
+            log.error("Error reading API data : ", e);
         }
 
         return null;
     }
+
 }
 
+@ToString
+@Getter
+@Setter
 class Price{
     private String date;
     private String security;
     private Double price;
-    public String getDate(){
-        return date;
-    }
-    public String getSecurity(){
-        return security;
-    }
-    public void setDate(String data){
-        this.date = data;
-    }
-    public void setSecurity(String security){
-        this.security = security;
-    }
-    public Double getPrice(){
-        return price;
-    }
-    public void setPrice(Double price){
-        this.price = price;
-    }
-    @Override
-    public String toString() {
-        return "Price{" +
-                "date='" + date + '\'' +
-                ", security='" + security + '\'' +
-                ", price=" + price +
-                '}';
-    }
 }
+
+@ToString
+@Getter
+@Setter
 class Holding{
     private String date;
     private String security;
     private Integer quantity;
     private Double price;
     private String portfolio;
-    public String getDate(){
-        return date;
-    }
-    public String getSecurity(){
-        return security;
-    }
-    public Integer getQuantity(){
-        return quantity;
-    }
-    public String getPortfolio(){
-        return portfolio;
-    }
-    public void setDate(String data){
-        this.date = data;
-    }
-    public void setSecurity(String security){
-        this.security = security;
-    }
-    public void setQuantity(Integer quantity){
-        this.quantity = quantity;
-    }
-    public void getPortfolio(String portfolio){
-        this.portfolio = portfolio;
-    }
-    public Double getPrice(){
-        return price;
-    }
-    public void setPrice(Double price){
-        this.price = price;
-    }
-    @Override
-    public String toString() {
-        return "Holding{" +
-                "date='" + date + '\'' +
-                ", security='" + security + '\'' +
-                ", quantity=" + quantity +
-                ", price=" + price +
-                ", portfolio='" + portfolio + '\'' +
-                '}';
-    }
 }
