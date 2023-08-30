@@ -2,14 +2,14 @@ package com.dpattern.creational.factory;
 
 public class ShapeFactory {
 
-	public IShape getShape(String string) {
-		if(string.equalsIgnoreCase("circle")) {
+	public IShape getShape(Shapes shape) {
+		if(shape.equals(Shapes.CIRCLE)) {
 			return new CircleShape();
 		}
-		if(string.equalsIgnoreCase("triangle")) {
+		if(shape.equals(Shapes.TRIANGLE)) {
 			return new TriangleShape();
 		}
-		if(string.equalsIgnoreCase("square")) {
+		if(shape.equals(Shapes.SQUARE)) {
 			return new SquareShape();
 		}
 		return null;

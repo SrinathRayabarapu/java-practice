@@ -25,6 +25,6 @@ public class RedShapeDecorator implements IShape{
 	
 	//method to add color to border
 	private void setRedBorder(IShape decoratedShape) {
-		log.info("Adding Red border color!");
+		log.info("Adding Red color border!!");
 	}
 }

@@ -9,6 +9,10 @@ package com.dpattern.structural.decorator;
  * This pattern creates a decorator class which wraps the original class and provides additional functionality keeping
  * class methods' signature intact.
  *
+ * Examples:
+ * 1. Pizza maker and calculate the cost
+ * 2. Design Coffee maker
+ *
  * @author Srinath.Rayabarapu
  */
 public class DecoratorPatternMain {

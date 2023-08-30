@@ -1,4 +1,4 @@
-package com.dpattern.behavioural.observer;
+package com.dpattern.behavioural.observer.ex1;
 
 /**
  * abstract class to hold subject and update method

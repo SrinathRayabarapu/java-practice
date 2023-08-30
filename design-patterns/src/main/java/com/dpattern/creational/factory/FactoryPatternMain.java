@@ -11,13 +11,13 @@ public class FactoryPatternMain {
 	public static void main(String[] args) {
 		ShapeFactory shapeFactory = new ShapeFactory();
 		
-		IShape shape = shapeFactory.getShape("circle");
+		IShape shape = shapeFactory.getShape(Shapes.CIRCLE);
 		shape.draw();
 		
-		shape = shapeFactory.getShape("square");
+		shape = shapeFactory.getShape(Shapes.SQUARE);
 		shape.draw();
 		
-		shape = shapeFactory.getShape("triangle");
+		shape = shapeFactory.getShape(Shapes.TRIANGLE);
 		shape.draw();
 	}
 

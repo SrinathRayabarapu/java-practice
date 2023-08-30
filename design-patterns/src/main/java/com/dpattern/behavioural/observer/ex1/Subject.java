@@ -1,4 +1,4 @@
-package com.dpattern.behavioural.observer;
+package com.dpattern.behavioural.observer.ex1;
 
 import lombok.extern.slf4j.Slf4j;
 
