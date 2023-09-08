@@ -45,15 +45,20 @@ public class CheckLinkedListCyclicMain {
 
         log.info("Cycle removed - Printing the list");
 
+        printLinkedList(head);
+
+    }
+
+    public static void printLinkedList(Node head) {
         while (head != null) {
             System.out.println(head);
             head = head.getNext();
         }
-
     }
 
     // if a cycle exists, remove the cycle
-    private static Node removeCycleAndReturnHead(Node head) {
+    public static Node removeCycleAndReturnHead(Node head) {
+
         Node slow = head;
         Node fast = head;
         Node previous = head;
@@ -70,6 +75,7 @@ public class CheckLinkedListCyclicMain {
                 if (slow == fast) {
                     previous.setNext(null);
                 } else {
+                    System.out.println(slow + "-" + fast);
                     // identify the loop fist node and set the previous next to null
                     while (slow != fast) {
                         previous = fast;

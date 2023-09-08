@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * given a linked list, delete a node given node from it.
+ * given a linked list, delete a node.
  *
  * @author Srinath.Rayabarapu
  */
@@ -14,10 +14,10 @@ public class DeleteNodeInLinkedListMain {
 
         Node n1 = new Node(10);
         Node n2 = new Node(20);
-        Node n3 = new Node(10);
+        Node n3 = new Node(30);
         Node n4 = new Node(40);
         Node n5 = new Node(50);
-        Node n6 = new Node(20);
+        Node n6 = new Node(60);
         Node n7 = new Node(70);
         Node n8 = new Node(80);
 
@@ -32,15 +32,61 @@ public class DeleteNodeInLinkedListMain {
         System.out.println("Original List: ");
         printList(n1);
 
-        System.out.println("\nDeleting Node " + n4.getData());
-        deleteNode(n1, n4);
+//        System.out.println("\nDeleting Node " + n4.getData());
+//        deleteNode(n1, n4);
+
+        System.out.println("\nDeleting node with index " + 3);
+        deleteNode(n1, 3);
 
         System.out.println("Printing list after node deletion: ");
         printList(n1);
 
     }
 
-    private static void deleteNode(Node n1, Node node) {
+    public static void deleteNode(Node n1, Node deleteNode) {
+
+        Node head = n1;
+        Node previous = null;
+
+        while(head != null) {
+            if(head.getData().equals(deleteNode.getData())){
+                if(deleteNode.getNext() != null && previous != null){
+                    previous.setNext(deleteNode.getNext());
+                } else {
+                    if(previous != null) {
+                        previous.setNext(null);
+                    }
+                }
+            }
+            previous = head;
+            head = head.getNext();
+        }
+    }
+
+    public static void deleteNode(Node n1, int index) {
+
+        Node head = n1;
+        Node previous = null;
+        int count = 0;
+
+        while(head != null) {
+            if(count == index) {
+                if(head.getNext() != null && previous != null){
+                    previous.setNext(head.getNext());
+                } else {
+                    if(previous != null) {
+                        previous.setNext(null);
+                    }
+                }
+            }
+            previous = head;
+            head = head.getNext();
+            count++;
+        }
+    }
+
+
+    private static void deleteDuplicateNodes(Node n1) {
         Node head = n1;
         Set<Integer> set = new HashSet<>();
         Node previous = null;

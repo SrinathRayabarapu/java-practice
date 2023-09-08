@@ -62,7 +62,7 @@ class OddNumberThread implements Runnable{
 				}
 				this.counter = this.counter + 2;
 			}
-			this.lock.notify();
+			this.lock.notifyAll();
 		}
 	}
 }

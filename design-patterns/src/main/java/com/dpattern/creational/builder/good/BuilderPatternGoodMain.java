@@ -11,20 +11,23 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class BuilderPatternGoodMain {
 	public static void main(String[] args) {
-		
-		//create object of required home builder
-		EarthQuakeResistantBuilder earthQuakeResistantBuilder = new EarthQuakeResistantBuilder();
-		
-		//create object of director that will keep an eye on your builder
-		Director director = new Director(earthQuakeResistantBuilder);
 
-		// configuring the object
-		director.manageRequiredHomeConstruction();
+		HouseBuilder houseBuilder = new ConcreteHouseBuilder();
 
-		// return the built object
-		Home homeConstructedAtTheEnd = director.getComplexObjectOfHome();
-		
-		log.info(homeConstructedAtTheEnd.toString());
+		CivilEngineer civilEngineer = new CivilEngineer(houseBuilder);
+		civilEngineer.constructHouse();
+		House house = civilEngineer.getHouse();
+
+		System.out.println("Final House : " + house);
+
+
+		houseBuilder = new IglooHouseBuilder();
+		civilEngineer = new CivilEngineer(houseBuilder);
+		civilEngineer.constructHouse();
+
+		house = civilEngineer.getHouse();
+		System.out.println("Final House : " + house);
+
 	}
 
 }
