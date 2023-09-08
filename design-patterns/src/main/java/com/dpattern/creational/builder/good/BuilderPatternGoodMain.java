@@ -5,8 +5,8 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * used to build - complex objects which has a lot of configurations
  *
- * idea: Have an object which has different methods to build behaviour. Have another director who takes this object and
- * call the different methods on it and build the complex object and return it.
+ * idea: Have a base object which you want to create. Create a builder class for the base object which will add the behaviour and return the object.
+ * Have another orchestrator who builds this object and return.
  */
 @Slf4j
 public class BuilderPatternGoodMain {
