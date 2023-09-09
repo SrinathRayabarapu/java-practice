@@ -16,12 +16,12 @@ public class PalindromeMain {
 
     public static void main(String[] args) {
         String str = "abcba";
-        checkPalindromeStringOk(str);
+//        checkPalindromeStringOk(str);
 
         checkPalindromeStringGood(str);
 
-        int input = 1661;
-        checkPalindromeInt(input);
+//        int input = 1661;
+//        checkPalindromeInt(input);
     }
 
     /**
@@ -52,19 +52,19 @@ public class PalindromeMain {
         for(int i = str.length() - 1; i >= 0; i--) {
             temp.append(str.charAt(i));
         }
-        if(str.equals(temp.toString())){
+        if(str.contentEquals(temp)){
             log.info( str+ " is palindrome");
         } else {
             log.info( str+ " is NOT palindrome");
         }
     }
 
-    private static void checkPalindromeStringGood(String str) {
-        boolean allMatch = IntStream.range(0, str.length() / 2).allMatch(i -> str.charAt(i) == (str.charAt(str.length() - 1 - i)));
+    private static void checkPalindromeStringGood(String input) {
+        boolean allMatch = IntStream.range(0, input.length()/2).allMatch(i -> input.charAt(i) == (input.charAt((input.length()-1) - i)));
         if(allMatch){
-            log.info( str+ " is palindrome");
+            log.info("{} is palindrome", input);
         } else {
-            log.info( str+ " is NOT palindrome");
+            log.info( "{} is NOT palindrome", input);
         }
     }
 

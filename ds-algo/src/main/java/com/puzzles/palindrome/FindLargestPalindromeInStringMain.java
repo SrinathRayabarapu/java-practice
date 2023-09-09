@@ -13,47 +13,44 @@ package com.puzzles.palindrome;
  * 5. Have a palindrome function which checks if a string is palindrome
  * so for every substring (i,j) call this function, if it is a palindrome store it in a string variable
  * If you find next palindrome substring and if it is greater than the current one, replace it with current one.
- * Finally your string variable will have the answer
+ * Finally, your string variable will have the answer
  *
- * Issues: Time complexity: O(n^2)
+ * Issues: Time complexity: O(n^3)
  * 
  * @author Srinath.Rayabarapu
  *
  */
-public class FindPalindromesInBigStringMain {
+public class FindLargestPalindromeInStringMain {
 
 	public static void main(String[] args) {
-		findBiggestPalindrome();
+		findLargestPalindrome("ssdhsabccbakssdsd");
 		//System.out.println(checkStringPalindromeOrNot("madam"));
 	}
 
-	public static void findBiggestPalindrome() {
+	public static void findLargestPalindrome(String inputString) {
+
+		String largePalindrome = "";
 		
-		String inputString = "ssdhsabccbakssdsd";
-		String bigOne = "";
-		
-		for(int i=0; i< inputString.length(); i++){
-			for(int j=i+1; j<inputString.length(); j++){
+		for(int i = 0; i< inputString.length(); i++){
+			for(int j = i+1; j< inputString.length(); j++){
 
 				String subString = inputString.substring(i, j);
-				if(checkStringPalindromeOrNot(subString)){
-					if(bigOne.length() < subString.length()){
-						bigOne = subString;
-					}
+				if(isPalindrome(subString) && (largePalindrome.length() < subString.length())){
+						largePalindrome = subString;
 				}
 
 			}
 		}
-		System.out.println("Big One : " + bigOne);
+		System.out.println("Biggest Palindrome : " + largePalindrome);
 	}
-	
+
 	/**
 	 * simple method to check whether a string a palindrome or not
 	 * 
 	 * @param string
 	 * @return
 	 */
-	public static boolean checkStringPalindromeOrNot(String string){
+	public static boolean isPalindrome(String string){
 		int i = 0;
 		int j = string.length()-1;
 		while(i<j){

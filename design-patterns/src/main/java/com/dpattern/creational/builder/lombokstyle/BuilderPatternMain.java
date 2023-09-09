@@ -1,4 +1,4 @@
-package com.dpattern.creational.builder;
+package com.dpattern.creational.builder.lombokstyle;
 
 import lombok.ToString;
 
