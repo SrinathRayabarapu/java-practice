@@ -6,7 +6,7 @@ package com.puzzles.palindrome;
  * Ex: 20
  * 2, 3, 5, 7, 11
  *
- * Note: 13 and 17 are prime they are palindromes
+ * Note: 13 and 17 are prime, but they are NOT palindromes
  *e
  * @author Srinath.Rayabarapu
  */

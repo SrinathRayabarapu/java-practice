@@ -34,7 +34,7 @@
 	</logger>
 	-->
 
-	<!-- TRACE, DEBUG, INFO, WARN, ERROR -->
+	<!-- TRACE, DEBUG, INFO, WARN, ERROR, FATAL -->
 	<root level="DEBUG">
         <appender-ref ref="STDOUT" />
     </root>

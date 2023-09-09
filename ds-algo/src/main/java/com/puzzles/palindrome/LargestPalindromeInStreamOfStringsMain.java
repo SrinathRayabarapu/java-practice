@@ -9,7 +9,7 @@ import java.util.StringTokenizer;
  *
  * #walmart
  */
-public class MaximumPalindromeInStreamOfStringsMain {
+public class LargestPalindromeInStreamOfStringsMain {
 
     static int maxLengthOfPolindrome = 0;
     static String firstHalfToken = null;
