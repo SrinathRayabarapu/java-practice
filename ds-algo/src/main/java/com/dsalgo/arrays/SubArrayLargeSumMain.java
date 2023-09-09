@@ -8,7 +8,7 @@ import lombok.extern.slf4j.Slf4j;
  * # L1 - Medium - InterviewQuestion
  */
 @Slf4j
-public class ContiguousSubArrayLargeSumMain {
+public class SubArrayLargeSumMain {
 
     public static void main(String[] args) {
         int[] inputArray = {-1, 2, 3, 4, -10};

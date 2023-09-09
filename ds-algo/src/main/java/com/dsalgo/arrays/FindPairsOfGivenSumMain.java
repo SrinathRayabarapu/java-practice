@@ -18,25 +18,27 @@ public class FindPairsOfGivenSumMain {
 
     public static void main(String[] args) {
 
+        // case 1 - given unsorted array
         int[] intArray1 = {11, 2, 4, 1, 8, 4, 10, 15, 18, 9, 5};
         int sum = 20;
         log.info("Finding pairs in unsorted array for sum : {}", sum);
-        // case 1
-        // O(n) - time complexity, O(n) - space complexity
-        findPairsHashSet(intArray1, sum);
+        findPairsInUnsortedArray(intArray1, sum);
 
-        // case 2
-        // O(n) - time complexity, O(1) - space complexity
+        // case 2 - given sorted array
         int[] intArray2 = {0, 2, 4, 6, 12, 14, 16, 20, 22, 26};
         sum = 26;
         log.info("Finding pairs in sorted array for sum : {}", sum);
-
-        findPairsWhileLoop(intArray2, sum);
+        findPairsInSortedArray(intArray2, sum);
 
     }
 
-    // two pinter logic
-    private static void findPairsWhileLoop(int[] inputArray, int sum) {
+    /**
+     * two pointer logic
+     *
+     * TC: O(n)
+     * SC: O(1)
+     */
+    private static void findPairsInSortedArray(int[] inputArray, int sum) {
         int l = 0;
         int r = inputArray.length-1;
 
@@ -53,15 +55,20 @@ public class FindPairsOfGivenSumMain {
         }
     }
 
-    // using hashset is the key
-    private static void findPairsHashSet(int[] intArray, int sum) {
+    /**
+     * using hashset is the key
+     *
+     * TC: O(n)
+     * SCL O(n)
+     */
+    private static void findPairsInUnsortedArray(int[] intArray, int sum) {
 
         Set<Integer> intSet = new HashSet<>();
-        for (int i = 0; i < intArray.length; i++) {
-            if(intSet.contains(sum - intArray[i])){
-                log.info("Pair : " + (sum - intArray[i]) + "," + intArray[i]);
+        for (int j : intArray) {
+            if (intSet.contains(sum - j)) {
+                log.info("Pair : " + (sum - j) + "," + j);
             }
-            intSet.add(intArray[i]);
+            intSet.add(j);
         }
 
     }
