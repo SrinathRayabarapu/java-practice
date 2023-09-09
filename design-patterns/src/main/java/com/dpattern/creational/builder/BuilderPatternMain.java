@@ -1,28 +1,69 @@
 package com.dpattern.creational.builder;
 
+import lombok.ToString;
+
 /**
- * Creational design pattern -
- *
- * Builder pattern aims to "Separate the construction of a complex object
- * from its representation so that the same construction process can create different representations."
- * It is used to construct a complex object step by step and the final step will return the object.
- * The process of constructing an object should be generic so that it can be used to create different
- * representations of the same object.
- *
- * @author Srinath.Rayabarapu
+ * this is how lombok implemented builder pattern
  */
 public class BuilderPatternMain {
 
-	public static void main(String[] args) {
-		
-		MealBuilder builder = new MealBuilder();
-		Meal vegBurger = builder.prepareVegBurger();
-		vegBurger.showItems();
-		System.out.println("Total Cost: " + vegBurger.getCost()+"\n");
-		
-		Meal chickenBurger = builder.prepareChickenBurger();
-		chickenBurger.showItems();
-		System.out.println("Total Cost: " + chickenBurger.getCost());
-	}
+    public static void main(String[] args) {
+        Student student = Student.builder()
+                .setStudentName("Student 1")
+                .setAddress("Whitefield")
+                .setQualification("MCA")
+                .build();
+
+        System.out.println("Student obj : " + student);
+    }
+
+}
+
+@ToString
+class Student {
+
+    private String studentName;
+
+    private String qualification;
+
+    private String address;
+
+    private Student(StudentBuilder builder) {
+        this.studentName = builder.studentName;
+        this.qualification = builder.qualification;
+        this.address = builder.address;
+    }
+
+    public static StudentBuilder builder(){
+        return new StudentBuilder();
+    }
+
+    public static class StudentBuilder {
+
+        private String studentName;
+
+        private String qualification;
+
+        private String address;
+
+        public StudentBuilder setStudentName(String studentName) {
+            this.studentName = studentName;
+            return this;
+        }
+
+        public StudentBuilder setQualification(String qualification) {
+            this.qualification = qualification;
+            return this;
+        }
+
+        public StudentBuilder setAddress(String address) {
+            this.address = address;
+            return this;
+        }
+
+        public Student build() {
+            return new Student(this);
+        }
+    }
 
 }
