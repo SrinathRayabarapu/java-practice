@@ -3,7 +3,7 @@ package com.dsalgo.arrays;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * Find the contiguous non-empty sub-array within an array A of length N, with the largest sum
+ * Find the sub-array within an array A of length N, with the largest sum
  * <p>
  * # L1 - Medium - InterviewQuestion
  */
@@ -18,6 +18,12 @@ public class SubArrayLargeSumMain {
         log.info("Large sum is : {}", largeSum);
     }
 
+    /**
+     * this technique is called - "carry forward"
+     *
+     * @param inputArray
+     * @return
+     */
     private static int findLargestSubArray(int[] inputArray) {
         int maxSum = inputArray[0];
         int currentSum = inputArray[0];
