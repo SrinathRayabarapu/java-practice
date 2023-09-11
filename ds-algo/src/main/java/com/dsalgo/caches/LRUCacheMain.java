@@ -10,14 +10,15 @@ import java.util.Map;
 
 /**
  * implement LRU algorithm in below ways -
- * 1. LRUCache where : cache will have limited capacity
- * set(key, value) will replace the least recently values if the capacity is more
- * get(key) will get the value if the key present, else return -1
+ *  1. LRUCache where : cache will have limited capacity
+ *  set(key, value) will replace the least recently values if the capacity is more
+ *  get(key) will get the value if the key present, else return -1
  * <p>
- * 2. LRUSimple class where:
- * cache will have a size and inserting elements will replace old occurrences upon size
+ *  2. LRUSimple class where:
+ *  cache will have a size and inserting elements will replace old occurrences upon size
  * <p>
- * we will use a Hashmap and Queue
+ *
+ *  we will use a Hashmap and Queue
  *
  * @author Srinath.Rayabarapu
  */
@@ -72,7 +73,9 @@ public class LRUCacheMain {
 class LRUCache {
 
     private DoublyNode head, tail;
+
     private int capacity;
+
     private Map<Integer, DoublyNode> map;
 
     public LRUCache(int capacity) {
