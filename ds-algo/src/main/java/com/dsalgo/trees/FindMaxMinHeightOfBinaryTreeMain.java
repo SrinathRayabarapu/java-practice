@@ -16,15 +16,7 @@ public class FindMaxMinHeightOfBinaryTreeMain {
     public static void main(String[] args) {
 
         // binary search tree - but can be any binary tree!
-        TreeNode root = new TreeNode(40, "forty");
-        root.leftChild = new TreeNode(20, "twenty");
-        root.rightChild = new TreeNode(60, "sixty");
-        root.leftChild.leftChild = new TreeNode(10, "ten");
-        root.leftChild.leftChild.leftChild = new TreeNode(5, "five");
-        root.leftChild.leftChild.rightChild = new TreeNode(15, "fifteen");
-        root.leftChild.rightChild = new TreeNode(30, "thirty");
-        root.rightChild.leftChild = new TreeNode(50, "fifty");
-        root.rightChild.rightChild = new TreeNode(70, "seventy");
+        TreeNode root = TreeUtil.create9NodesTree();
 
         int height = findMaxHeightRecursive(root);
         log.info("Max height of the Tree : " + height);

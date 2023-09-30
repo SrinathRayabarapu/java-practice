@@ -39,18 +39,11 @@ import java.util.Stack;
  * @author Srinath.Rayabarapu
  */
 @Slf4j
-public class BinaryTreeTraversalsMain {
+public class TraversalsMain {
 
 	public static void main(String[] args) {
 
-		TreeNode root = new TreeNode(60, "sixty");
-		root.leftChild = new TreeNode(30, "thirty");
-		root.rightChild = new TreeNode(80, "eighty");
-		root.leftChild.leftChild = new TreeNode(10, "ten");
-		root.leftChild.rightChild = new TreeNode(50, "fifty");
-		root.rightChild.leftChild = new TreeNode(70, "seventy");
-		root.rightChild.rightChild = new TreeNode(90, "ninety");
-
+		TreeNode root = TreeUtil.create6NodesTree();
 
 		log.info("Original Tree: ");
 		log.info("           60            ");
@@ -70,7 +63,12 @@ public class BinaryTreeTraversalsMain {
 	}
 
 	/**
-	 * printTree left child, node and right child
+	 * left, node, right
+	 *
+	 * recursion uses implicit(thread) stack
+	 *
+	 * TC: O(n)
+	 * SC: O(h) where h is the height of the tree
 	 *
 	 * @param node
 	 */
@@ -83,9 +81,7 @@ public class BinaryTreeTraversalsMain {
 	}
 
 	/**
-	 * printTree node, left child and right child
-	 *
-	 * recursive is easy - uses implicit Stack
+	 * node, left, right
 	 *
 	 * @param node
 	 */
@@ -98,7 +94,7 @@ public class BinaryTreeTraversalsMain {
 	}
 
 	/**
-	 * printTree left child, right child and node
+	 * left, right, node
 	 *
 	 * @param node
 	 */
