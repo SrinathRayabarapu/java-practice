@@ -17,7 +17,9 @@ public class FindTheHeightOfBSTMain {
     }
 
     private static int findTheHeight(TreeNode root) {
-        return 0;
+        if(root == null)
+            return -1;
+        return Math.max(findTheHeight(root.leftChild), findTheHeight(root.rightChild)) + 1;
     }
 
 }
